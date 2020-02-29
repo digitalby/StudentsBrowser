@@ -13,6 +13,7 @@
 		ED884DA4240A91B100095134 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED884D9F240A91B100095134 /* AppDelegate.m */; };
 		ED884DA6240A924200095134 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED884D9B240A91B100095134 /* Assets.xcassets */; };
 		ED884DA7240A927B00095134 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED884D88240A8C8400095134 /* Main.storyboard */; };
+		EDE1D206240A9896009CFA60 /* StudentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE1D205240A9896009CFA60 /* StudentCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		ED884D9E240A91B100095134 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ED884D9F240A91B100095134 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		ED884DA0240A91B100095134 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDE1D204240A9896009CFA60 /* StudentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudentCell.h; sourceTree = "<group>"; };
+		EDE1D205240A9896009CFA60 /* StudentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +62,8 @@
 			isa = PBXGroup;
 			children = (
 				ED884D99240A91B100095134 /* Supporting files */,
-				ED884D85240A8C8400095134 /* ViewController.h */,
-				ED884D86240A8C8400095134 /* ViewController.m */,
-				ED884D88240A8C8400095134 /* Main.storyboard */,
+				ED884DA8240A972700095134 /* Views */,
+				ED884DA9240A973500095134 /* Controllers */,
 			);
 			path = StudentsBrowser;
 			sourceTree = "<group>";
@@ -77,6 +79,25 @@
 				ED884DA0240A91B100095134 /* Info.plist */,
 			);
 			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		ED884DA8240A972700095134 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ED884D88240A8C8400095134 /* Main.storyboard */,
+				EDE1D204240A9896009CFA60 /* StudentCell.h */,
+				EDE1D205240A9896009CFA60 /* StudentCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ED884DA9240A973500095134 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ED884D85240A8C8400095134 /* ViewController.h */,
+				ED884D86240A8C8400095134 /* ViewController.m */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +173,7 @@
 				ED884D87240A8C8400095134 /* ViewController.m in Sources */,
 				ED884DA3240A91B100095134 /* main.m in Sources */,
 				ED884DA4240A91B100095134 /* AppDelegate.m in Sources */,
+				EDE1D206240A9896009CFA60 /* StudentCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
