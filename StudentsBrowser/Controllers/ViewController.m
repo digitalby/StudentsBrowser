@@ -17,42 +17,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self downloadData];
-}
-
-- (void)downloadData {
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-    NSString *urlString = @"https://randomuser.me/api";
-    NSURL *url = [[NSURL alloc] initWithString:urlString];
-    if (!url)
-        return;
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSString *jsonString = [[NSString alloc] initWithContentsOfURL:location encoding:NSUTF8StringEncoding error:nil];
-        NSData *data = [[NSData alloc] initWithContentsOfURL:location];
-        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-        NSArray *people = [responseDictionary valueForKeyPath:@"results"];
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (!error) {
-                //TODO: UI Update
-                NSLog(@"%@", people.description);
-            } else {
-                NSLog(@"%@", error.description);
-            }
-        });
+    JSONDownloader* downloader = [[JSONDownloader alloc] init];
+    [downloader downloadDataWithCompletion:^(NSArray * _Nullable json, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"%@", error.description);
+        }
+        if (json) {
+            //TODO: UI Update
+            NSLog(@"%@", json.description);
+        }
     }];
-    [task resume];
 }
 
 #pragma mark - Data Source
 
-- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 0;
 }
 

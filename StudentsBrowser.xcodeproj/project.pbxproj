@@ -13,6 +13,8 @@
 		ED884DA4240A91B100095134 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED884D9F240A91B100095134 /* AppDelegate.m */; };
 		ED884DA6240A924200095134 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED884D9B240A91B100095134 /* Assets.xcassets */; };
 		ED884DA7240A927B00095134 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED884D88240A8C8400095134 /* Main.storyboard */; };
+		EDD70574241279880015EE32 /* JSONDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD70573241279880015EE32 /* JSONDownloader.m */; };
+		EDD7057724127F990015EE32 /* NetworkError.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD7057624127F990015EE32 /* NetworkError.m */; };
 		EDE1D206240A9896009CFA60 /* StudentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE1D205240A9896009CFA60 /* StudentCell.m */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +29,10 @@
 		ED884D9E240A91B100095134 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ED884D9F240A91B100095134 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		ED884DA0240A91B100095134 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDD70572241279880015EE32 /* JSONDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONDownloader.h; sourceTree = "<group>"; };
+		EDD70573241279880015EE32 /* JSONDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSONDownloader.m; sourceTree = "<group>"; };
+		EDD7057524127F990015EE32 /* NetworkError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkError.h; sourceTree = "<group>"; };
+		EDD7057624127F990015EE32 /* NetworkError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkError.m; sourceTree = "<group>"; };
 		EDE1D204240A9896009CFA60 /* StudentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudentCell.h; sourceTree = "<group>"; };
 		EDE1D205240A9896009CFA60 /* StudentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,6 +68,8 @@
 			isa = PBXGroup;
 			children = (
 				ED884D99240A91B100095134 /* Supporting files */,
+				EDD70570241279570015EE32 /* Network */,
+				EDD70571241279640015EE32 /* Models */,
 				ED884DA8240A972700095134 /* Views */,
 				ED884DA9240A973500095134 /* Controllers */,
 			);
@@ -98,6 +106,24 @@
 				ED884D86240A8C8400095134 /* ViewController.m */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		EDD70570241279570015EE32 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				EDD70572241279880015EE32 /* JSONDownloader.h */,
+				EDD70573241279880015EE32 /* JSONDownloader.m */,
+				EDD7057524127F990015EE32 /* NetworkError.h */,
+				EDD7057624127F990015EE32 /* NetworkError.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		EDD70571241279640015EE32 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,8 +197,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED884D87240A8C8400095134 /* ViewController.m in Sources */,
+				EDD7057724127F990015EE32 /* NetworkError.m in Sources */,
 				ED884DA3240A91B100095134 /* main.m in Sources */,
 				ED884DA4240A91B100095134 /* AppDelegate.m in Sources */,
+				EDD70574241279880015EE32 /* JSONDownloader.m in Sources */,
 				EDE1D206240A9896009CFA60 /* StudentCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
