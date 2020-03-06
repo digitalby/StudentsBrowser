@@ -16,10 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic) NSString* lastName;
 @property(nonatomic) NSString* title;
 
-- (instancetype)initWithFirstName:(NSString*)firstName lastName:(NSString*)lastName title:(NSString*)title;
-- (NSString*)makeFirstAndLastName;
-- (NSString*)makeTitleAndLastName;
-- (NSString*)makeFullName;
+- (instancetype) initWithFirstName:(NSString*)firstName lastName:(NSString*)lastName title:(NSString*)title;
+- (NSString*) makeFirstAndLastName;
+- (NSString*) makeTitleAndLastName;
+- (NSString*) makeFullName;
+
+- (NSString*) description;
 
 @end
 

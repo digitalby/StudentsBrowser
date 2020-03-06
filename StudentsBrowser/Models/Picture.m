@@ -10,4 +10,9 @@
 
 @implementation Picture
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"{\r    large: %@\r    medium: %@\r    thumbnail: %@\r}", self.largePictureURLString, self.mediumPictureURLString, self.thumbnailPictureURLString];
+}
+
 @end

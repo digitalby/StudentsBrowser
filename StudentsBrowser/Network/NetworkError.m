@@ -17,13 +17,8 @@ NSString* const kNetworkErrorDomain = @"me.digitalby.StudentsBrowser.NetworkErro
 
 @implementation NetworkError
 
-+ (instancetype) urlError {
-    NetworkError* error = [[super alloc]initWithDomain:kNetworkErrorDomain code:NetworkErrorURLError userInfo:nil];
-    return error;
-}
-
-+ (instancetype)invalidData {
-    NetworkError* error = [[super alloc]initWithDomain:kNetworkErrorDomain code:NetworkErrorInvalidData userInfo:nil];
++ (instancetype) errorWithErrorCode:(NetworkErrorCode)errorCode {
+    NetworkError* error = [[super alloc]initWithDomain:kNetworkErrorDomain code:errorCode userInfo:nil];
     return error;
 }
 

@@ -14,11 +14,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, NetworkErrorCode) {
     NetworkErrorURLError,
-    NetworkErrorInvalidData
+    NetworkErrorRequestFailed,
+    NetworkErrorBadResponse,
+    NetworkErrorInvalidData,
+    NetworkErrorEmptyResponseDictionary,
+    NetworkErrorGotErrorResponse,
+    NetworkErrorGotNilResults,
+    NetworkErrorParsingFailed
 };
 
-+ (instancetype) urlError;
-+ (instancetype) invalidData;
++ (instancetype) errorWithErrorCode:(NetworkErrorCode)errorCode;
 
 @end
 

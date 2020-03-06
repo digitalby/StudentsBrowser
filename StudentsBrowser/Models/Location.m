@@ -10,8 +10,29 @@
 
 @implementation Location
 
-- (void) test {
-    self.city = @"";
+- (NSString *)description
+{
+    NSString* coordinates = [NSString stringWithFormat: @"coordinates: %f,%f", self.coordinates.latitude, self.coordinates.longitude];
+    NSString* city = [NSString stringWithFormat: @"city: %@", self.city];
+    NSString* state = [NSString stringWithFormat: @"state: %@", self.state];
+    NSString* country = [NSString stringWithFormat: @"country: %@", self.country];
+    NSString* postcode = [NSString stringWithFormat: @"postcode: %@", self.postcode];
+    NSString* streetName = [NSString stringWithFormat: @"streetName: %@", self.streetName];
+    NSString* streetNumber = [NSString stringWithFormat: @"streetNumber: %@", self.streetNumber];
+    NSString* timezoneDescription = [NSString stringWithFormat: @"timezoneDescription: %@", self.timezoneDescription];
+    NSArray* array = @[
+        coordinates,
+        city,
+        state,
+        country,
+        postcode,
+        streetName,
+        streetNumber,
+        timezoneDescription
+    ];
+
+    NSString* formatString = [array componentsJoinedByString:[NSString stringWithFormat:@"\r    "]];
+    return [NSString stringWithFormat:@"    {\r    %@\r    }", formatString];
 }
 
 @end

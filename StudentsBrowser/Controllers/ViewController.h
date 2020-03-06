@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "JSONDownloader.h"
+#import "JSONParser.h"
 
 @interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 

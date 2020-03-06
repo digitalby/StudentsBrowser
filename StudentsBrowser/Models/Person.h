@@ -22,12 +22,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic) NSDate * _Nullable dateOfBirth;
 @property(nonatomic, readonly, getter=age) NSUInteger age;
 @property(nonatomic) NSString * _Nullable email;
-@property(nonatomic) Gender * _Nullable gender;
+@property(nonatomic) Gender gender;
 @property(nonatomic) FullName * _Nullable fullName;
 @property(nonatomic) NSString * _Nullable nationality;
 @property(nonatomic) Login * _Nullable login;
 @property(nonatomic) Picture * _Nullable picture;
 @property(nonatomic) Location * _Nullable location;
+
+- (NSString *) description;
 
 @end
 

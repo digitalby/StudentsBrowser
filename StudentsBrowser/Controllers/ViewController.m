@@ -18,14 +18,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     JSONDownloader* downloader = [[JSONDownloader alloc] init];
+    JSONParser* parser = [[JSONParser alloc]init];
     [downloader downloadDataWithCompletion:^(NSArray * _Nullable json, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"%@", error.description);
-        }
-        if (json) {
-            //TODO: UI Update
-            NSLog(@"%@", json.description);
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                NSLog(@"%@", error.description);
+            }
+            if (json) {
+                //TODO: UI Update
+                NSArray *people = [parser getPeopleFromJSONArray:json];
+                NSLog(@"%@", people.description);
+            }
+        });
     }];
 }
 

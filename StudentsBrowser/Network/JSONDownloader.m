@@ -8,7 +8,7 @@
 
 #import "JSONDownloader.h"
 
-NSString* const kAPIURL = @"https://randomuser.me/api";
+NSString* const kAPIURL = @"https://randomuser.me/api/";
 
 @interface JSONDownloader ()
 
@@ -26,30 +26,67 @@ NSString* const kAPIURL = @"https://randomuser.me/api";
     return [[JSONDownloader alloc] initWithConfiguration:defaultConfiguration];
 }
 
-- (void) downloadDataWithCompletion:(void (^)(NSArray* json, NSError* error))completion {
+- (void)downloadDataWithURL:(NSURL *)url completion:(void (^)(NSArray *, NSError *))completion {
     NSURLSession *session = self.session;
-    NSURL *url = [[NSURL alloc] initWithString:kAPIURL];
-    if (!url) {
-        NetworkError* error = [NetworkError urlError];
-        completion(nil, error);
-        return;
-    }
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+        if (!httpResponse) {
+            NetworkError *error = [NetworkError errorWithErrorCode:NetworkErrorRequestFailed];
+            if (completion)
+                completion(nil, error);
+            return;
+        }
+        if (httpResponse.statusCode != 200) {
+            NetworkError *error = [NetworkError errorWithErrorCode:NetworkErrorBadResponse];
+            if (completion)
+                completion(nil, error);
+            return;
+        }
         NSData *data = [[NSData alloc] initWithContentsOfURL:location];
         if (!data) {
-            NetworkError *error = [NetworkError invalidData];
-            completion(nil, error);
+            NetworkError *error = [NetworkError errorWithErrorCode:NetworkErrorInvalidData];
+            if (completion)
+                completion(nil, error);
             return;
         }
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+        if(!responseDictionary) {
+            NetworkError *error = [NetworkError errorWithErrorCode:NetworkErrorEmptyResponseDictionary];
+            if (completion)
+                completion(nil, error);
+            return;
+        }
+        NSString* jsonError = [responseDictionary valueForKey:@"error"];
+        if(jsonError) {
+            NetworkError* error = [NetworkError errorWithErrorCode:NetworkErrorGotErrorResponse];
+            if (completion)
+                completion(nil, error);
+            return;
+        }
         NSArray *jsonData = [responseDictionary valueForKeyPath:@"results"];
+        if(!jsonData) {
+            NetworkError* error = [NetworkError errorWithErrorCode:NetworkErrorGotNilResults];
+            if (completion)
+                completion(nil, error);
+            return;
+        }
 
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(jsonData, error);
-        });
+        if (completion)
+            completion(jsonData, nil);
     }];
     [task resume];
+}
+
+- (void) downloadDataWithCompletion:(void (^)(NSArray* json, NSError* error))completion {
+    NSURL *url = [[NSURL alloc] initWithString:kAPIURL];
+    if (!url) {
+        NetworkError* error = [NetworkError errorWithErrorCode:NetworkErrorURLError];
+        if (completion)
+            completion(nil, error);
+        return;
+    }
+    [self downloadDataWithURL:url completion:completion];
 }
 
 @end

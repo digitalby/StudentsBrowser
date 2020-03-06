@@ -14,4 +14,6 @@
 @property(nonatomic) NSString* mediumPictureURLString;
 @property(nonatomic) NSString* thumbnailPictureURLString;
 
+- (NSString*) description;
+
 @end

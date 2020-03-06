@@ -42,4 +42,8 @@
             ];
 }
 
+- (NSString *) description {
+    return [self makeFullName];
+}
+
 @end

@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype) init;
 - (instancetype) initWithConfiguration:(NSURLSessionConfiguration* _Nonnull)configuration;
+- (void) downloadDataWithURL:(NSURL*)url completion:(void (^_Nullable)(NSArray* _Nullable json, NSError* _Nullable error))completion;
 - (void) downloadDataWithCompletion:(void (^_Nullable)(NSArray* _Nullable json, NSError* _Nullable error))completion;
 
 @end

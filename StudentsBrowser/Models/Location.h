@@ -11,7 +11,7 @@
 
 @interface Location : NSObject
 
-@property(nonatomic) CLLocationCoordinate2D * _Nullable coordinates;
+@property(nonatomic) CLLocationCoordinate2D coordinates;
 @property(nonatomic) NSString * _Nullable city;
 @property(nonatomic) NSString * _Nullable state;
 @property(nonatomic) NSString * _Nullable country;
@@ -19,5 +19,7 @@
 @property(nonatomic) NSString * _Nullable streetName;
 @property(nonatomic) NSString * _Nullable streetNumber;
 @property(nonatomic) NSString * _Nullable timezoneDescription;
+
+- (NSString* _Nonnull) description;
 
 @end
