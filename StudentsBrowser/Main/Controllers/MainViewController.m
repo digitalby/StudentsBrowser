@@ -1,25 +1,29 @@
 //
-//  ViewController.m
+//  MainViewController.m
 //  StudentsBrowser
 //
 //  Created by Digital on 29/02/2020.
 //  Copyright © 2020 digitalby. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
 
-@interface ViewController ()
+@interface MainViewController ()
 
-@property(nonatomic) NSArray* arrayOfPeople;
+@property(nonatomic) MainTableViewHelper* tableViewHelper;
 
 @end
 
-@implementation ViewController
+@implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     self.arrayOfPeople = [[NSArray alloc]init];
+    self.tableViewHelper = [[MainTableViewHelper alloc]initWithViewController:self];
+    self.tableView.dataSource = self.tableViewHelper;
+    self.tableView.delegate = self.tableViewHelper;
+
     JSONDownloader* downloader = [[JSONDownloader alloc] init];
     JSONParser* parser = [[JSONParser alloc]init];
     [downloader downloadDataWithAmount:50 completion:^(NSArray * _Nullable json, NSError * _Nullable error) {
@@ -36,53 +40,9 @@
                     return [lhs.fullName.lastName compare:rhs.fullName.lastName];
                 }];
                 [self.tableView reloadData];
-                NSLog(@"Ready");
             }
         });
     }];
-}
-
-#pragma mark - Data Source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger count = self.arrayOfPeople.count;
-    NSLog(@"%zd", count);
-    return count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    StudentCell* cell = (StudentCell *)[tableView dequeueReusableCellWithIdentifier:@"StudentCell" forIndexPath:indexPath];
-    if (!cell) {
-        abort();
-    }
-    Person* person = [self.arrayOfPeople objectAtIndex:indexPath.row];
-    if (!person) {
-        return cell;
-    }
-    if (person.fullName) {
-        cell.textLabel.text = [person.fullName makeFirstAndLastName];
-    }
-    cell.imageView.image = [UIImage imageNamed:@"placeholder_person"];
-    if (person.picture) {
-        //Download
-        //cell.imageView.image = person.picture.thumbnailPictureURLString;
-    }
-
-    return cell;
-}
-
-#pragma mark - Delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString* message = [NSString stringWithFormat:@"You selected %@", indexPath];
-    UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Delegate" message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-    [alertController addAction:okAction];
-    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark - Actions

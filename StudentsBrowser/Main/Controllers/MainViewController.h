@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MainViewController.h
 //  StudentsBrowser
 //
 //  Created by Digital on 29/02/2020.
@@ -10,12 +10,15 @@
 #import "JSONDownloader.h"
 #import "JSONParser.h"
 #import "StudentCell.h"
+#import "MainTableViewHelper.h"
 
-@interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface MainViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *leftBarButtonItem;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *rightBarButtonItem;
+
+@property(nonatomic) NSArray* arrayOfPeople;
 
 @end
 
