@@ -21,6 +21,7 @@
 		EDD7058624128DB90015EE32 /* Picture.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD7058524128DB90015EE32 /* Picture.m */; };
 		EDD7058924128E540015EE32 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD7058824128E540015EE32 /* Location.m */; };
 		EDD7058C2412BBD50015EE32 /* JSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD7058B2412BBD50015EE32 /* JSONParser.m */; };
+		EDD7059024142F060015EE32 /* NSURL+Query.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD7058F24142F060015EE32 /* NSURL+Query.m */; };
 		EDE1D206240A9896009CFA60 /* StudentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE1D205240A9896009CFA60 /* StudentCell.m */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,8 @@
 		EDD7058824128E540015EE32 /* Location.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		EDD7058A2412BBD50015EE32 /* JSONParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONParser.h; sourceTree = "<group>"; };
 		EDD7058B2412BBD50015EE32 /* JSONParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSONParser.m; sourceTree = "<group>"; };
+		EDD7058E24142F060015EE32 /* NSURL+Query.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURL+Query.h"; sourceTree = "<group>"; };
+		EDD7058F24142F060015EE32 /* NSURL+Query.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Query.m"; sourceTree = "<group>"; };
 		EDE1D204240A9896009CFA60 /* StudentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudentCell.h; sourceTree = "<group>"; };
 		EDE1D205240A9896009CFA60 /* StudentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				ED884D99240A91B100095134 /* Supporting files */,
+				EDD7058D24142EC00015EE32 /* Categories */,
 				EDD70570241279570015EE32 /* Network */,
 				EDD70571241279640015EE32 /* Models */,
 				ED884DA8240A972700095134 /* Views */,
@@ -156,6 +160,15 @@
 				EDD7058824128E540015EE32 /* Location.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		EDD7058D24142EC00015EE32 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				EDD7058E24142F060015EE32 /* NSURL+Query.h */,
+				EDD7058F24142F060015EE32 /* NSURL+Query.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +243,7 @@
 			files = (
 				ED884D87240A8C8400095134 /* ViewController.m in Sources */,
 				EDD7058024128AE20015EE32 /* FullName.m in Sources */,
+				EDD7059024142F060015EE32 /* NSURL+Query.m in Sources */,
 				EDD7058C2412BBD50015EE32 /* JSONParser.m in Sources */,
 				EDD7057724127F990015EE32 /* NetworkError.m in Sources */,
 				EDD7058324128D3E0015EE32 /* Login.m in Sources */,

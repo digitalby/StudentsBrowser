@@ -10,24 +10,33 @@
 
 @interface ViewController ()
 
+@property(nonatomic) NSArray* arrayOfPeople;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    self.arrayOfPeople = [[NSArray alloc]init];
     JSONDownloader* downloader = [[JSONDownloader alloc] init];
     JSONParser* parser = [[JSONParser alloc]init];
-    [downloader downloadDataWithCompletion:^(NSArray * _Nullable json, NSError * _Nullable error) {
+    [downloader downloadDataWithAmount:50 completion:^(NSArray * _Nullable json, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error) {
                 NSLog(@"%@", error.description);
             }
             if (json) {
-                //TODO: UI Update
                 NSArray *people = [parser getPeopleFromJSONArray:json];
-                NSLog(@"%@", people.description);
+                self.arrayOfPeople = people;
+                self.arrayOfPeople = [self.arrayOfPeople sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                    Person *lhs = (Person *)obj1;
+                    Person *rhs = (Person *)obj2;
+                    return [lhs.fullName.lastName compare:rhs.fullName.lastName];
+                }];
+                [self.tableView reloadData];
+                NSLog(@"Ready");
             }
         });
     }];
@@ -40,11 +49,30 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    NSInteger count = self.arrayOfPeople.count;
+    NSLog(@"%zd", count);
+    return count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [tableView dequeueReusableCellWithIdentifier:@"StudentCell" forIndexPath:indexPath];
+    StudentCell* cell = (StudentCell *)[tableView dequeueReusableCellWithIdentifier:@"StudentCell" forIndexPath:indexPath];
+    if (!cell) {
+        abort();
+    }
+    Person* person = [self.arrayOfPeople objectAtIndex:indexPath.row];
+    if (!person) {
+        return cell;
+    }
+    if (person.fullName) {
+        cell.textLabel.text = [person.fullName makeFirstAndLastName];
+    }
+    cell.imageView.image = [UIImage imageNamed:@"placeholder_person"];
+    if (person.picture) {
+        //Download
+        //cell.imageView.image = person.picture.thumbnailPictureURLString;
+    }
+
+    return cell;
 }
 
 #pragma mark - Delegate

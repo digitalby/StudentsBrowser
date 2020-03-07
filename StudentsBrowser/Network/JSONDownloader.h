@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NetworkError.h"
+#import "NSURL+Query.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype) initWithConfiguration:(NSURLSessionConfiguration* _Nonnull)configuration;
 - (void) downloadDataWithURL:(NSURL*)url completion:(void (^_Nullable)(NSArray* _Nullable json, NSError* _Nullable error))completion;
 - (void) downloadDataWithCompletion:(void (^_Nullable)(NSArray* _Nullable json, NSError* _Nullable error))completion;
+- (void) downloadDataWithAmount:(NSUInteger)amount completion:(void (^_Nullable)(NSArray* _Nullable json, NSError* _Nullable error))completion;
 
 @end
 

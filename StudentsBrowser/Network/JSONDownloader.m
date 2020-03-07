@@ -78,7 +78,7 @@ NSString* const kAPIURL = @"https://randomuser.me/api/";
     [task resume];
 }
 
-- (void) downloadDataWithCompletion:(void (^)(NSArray* json, NSError* error))completion {
+- (void) downloadDataWithAmount:(NSUInteger)amount completion:(void (^)(NSArray* json, NSError* error))completion {
     NSURL *url = [[NSURL alloc] initWithString:kAPIURL];
     if (!url) {
         NetworkError* error = [NetworkError errorWithErrorCode:NetworkErrorURLError];
@@ -86,7 +86,13 @@ NSString* const kAPIURL = @"https://randomuser.me/api/";
             completion(nil, error);
         return;
     }
+    NSString* amountQuery = [NSString stringWithFormat:@"results=%tu", amount];
+    url = [url appendingQueryString:amountQuery];
     [self downloadDataWithURL:url completion:completion];
+}
+
+- (void) downloadDataWithCompletion:(void (^)(NSArray* json, NSError* error))completion {
+    [self downloadDataWithAmount:1 completion:completion];
 }
 
 @end

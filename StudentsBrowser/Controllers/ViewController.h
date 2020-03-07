@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "JSONDownloader.h"
 #import "JSONParser.h"
+#import "StudentCell.h"
 
 @interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
