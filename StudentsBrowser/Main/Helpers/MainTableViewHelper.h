@@ -10,10 +10,11 @@
 #import "MainViewController.h"
 #import "ViewControllerHelper.h"
 
-@interface MainTableViewHelper : NSObject<ViewControllerHelper, UITableViewDataSource, UITableViewDelegate>
+@interface MainTableViewHelper : NSObject<ViewControllerHelper, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating>
 
 @property (weak, nonatomic) UIViewController* _Nullable viewController;
 
 - (instancetype _Nonnull)initWithViewController:(UIViewController * _Nonnull)viewController;
+- (BOOL) filteringIsInProgress;
 
 @end
