@@ -46,8 +46,13 @@
     }
     cell.imageView.image = [UIImage imageNamed:@"placeholder_person"];
     if (person.picture) {
-        //Download
-        //cell.imageView.image = person.picture.thumbnailPictureURLString;
+        NSData* thumbnailData = person.picture.thumbnailPicture;
+        if (thumbnailData) {
+            UIImage *thumbnail = [[UIImage alloc]initWithData:thumbnailData];
+            if (thumbnail) {
+                cell.imageView.image = thumbnail;
+            }
+        }
     }
 
     return cell;
@@ -56,6 +61,7 @@
 #pragma mark - Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSString* message = [NSString stringWithFormat:@"You selected %@", indexPath];
     UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Delegate" message:message preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];

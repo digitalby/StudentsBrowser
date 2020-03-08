@@ -12,7 +12,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"{\r    large: %@\r    medium: %@\r    thumbnail: %@\r}", self.largePictureURLString, self.mediumPictureURLString, self.thumbnailPictureURLString];
+    return [NSString stringWithFormat:@"{\r    large: %@ (%@)\r    medium: %@ (%@)\r    thumbnail: %@ (%@)\r}", self.largePictureURLString, self.largePicture, self.mediumPictureURLString, self.mediumPicture, self.thumbnailPictureURLString, self.thumbnailPicture];
 }
 
 @end

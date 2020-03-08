@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		ED5604D12414332A00E00971 /* MainTableViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5604D02414332A00E00971 /* MainTableViewHelper.m */; };
+		ED58201C2414F2100001FDC8 /* ThumbnailDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58201B2414F2100001FDC8 /* ThumbnailDownloader.m */; };
+		ED5820202414F2790001FDC8 /* Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58201F2414F2790001FDC8 /* Downloader.m */; };
 		ED884D87240A8C8400095134 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED884D86240A8C8400095134 /* MainViewController.m */; };
 		ED884DA2240A91B100095134 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED884D9C240A91B100095134 /* LaunchScreen.storyboard */; };
 		ED884DA3240A91B100095134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED884D9E240A91B100095134 /* main.m */; };
@@ -30,6 +32,10 @@
 		ED5604CF2414332A00E00971 /* MainTableViewHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTableViewHelper.h; sourceTree = "<group>"; };
 		ED5604D02414332A00E00971 /* MainTableViewHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTableViewHelper.m; sourceTree = "<group>"; };
 		ED5604D42414337400E00971 /* ViewControllerHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewControllerHelper.h; sourceTree = "<group>"; };
+		ED58201A2414F2100001FDC8 /* ThumbnailDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThumbnailDownloader.h; sourceTree = "<group>"; };
+		ED58201B2414F2100001FDC8 /* ThumbnailDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThumbnailDownloader.m; sourceTree = "<group>"; };
+		ED58201E2414F2790001FDC8 /* Downloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Downloader.h; sourceTree = "<group>"; };
+		ED58201F2414F2790001FDC8 /* Downloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Downloader.m; sourceTree = "<group>"; };
 		ED884D7C240A8C8400095134 /* StudentsBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentsBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED884D85240A8C8400095134 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		ED884D86240A8C8400095134 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -86,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				ED5604D62414377500E00971 /* Utility */,
+				ED58201D2414F2650001FDC8 /* Network */,
 				ED5604D22414335900E00971 /* Protocols */,
 				EDD70571241279640015EE32 /* Models */,
 				ED5604D8241437A800E00971 /* Views */,
@@ -128,6 +135,15 @@
 				ED884DA9240A973500095134 /* Controllers */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		ED58201D2414F2650001FDC8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				ED58201E2414F2790001FDC8 /* Downloader.h */,
+				ED58201F2414F2790001FDC8 /* Downloader.m */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		ED884D73240A8C8400095134 = {
@@ -190,6 +206,8 @@
 		EDD70570241279570015EE32 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				ED58201A2414F2100001FDC8 /* ThumbnailDownloader.h */,
+				ED58201B2414F2100001FDC8 /* ThumbnailDownloader.m */,
 				EDD7058A2412BBD50015EE32 /* JSONParser.h */,
 				EDD7058B2412BBD50015EE32 /* JSONParser.m */,
 				EDD70572241279880015EE32 /* JSONDownloader.h */,
@@ -310,11 +328,13 @@
 				EDD7058C2412BBD50015EE32 /* JSONParser.m in Sources */,
 				EDD7057724127F990015EE32 /* NetworkError.m in Sources */,
 				EDD7058324128D3E0015EE32 /* Login.m in Sources */,
+				ED5820202414F2790001FDC8 /* Downloader.m in Sources */,
 				EDD7058924128E540015EE32 /* Location.m in Sources */,
 				EDD7057A241287230015EE32 /* Person.m in Sources */,
 				ED884DA3240A91B100095134 /* main.m in Sources */,
 				EDD7058624128DB90015EE32 /* Picture.m in Sources */,
 				ED884DA4240A91B100095134 /* AppDelegate.m in Sources */,
+				ED58201C2414F2100001FDC8 /* ThumbnailDownloader.m in Sources */,
 				EDD70574241279880015EE32 /* JSONDownloader.m in Sources */,
 				ED5604D12414332A00E00971 /* MainTableViewHelper.m in Sources */,
 				EDE1D206240A9896009CFA60 /* StudentCell.m in Sources */,

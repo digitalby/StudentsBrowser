@@ -16,14 +16,9 @@ NSString* const kAPIURL = @"https://randomuser.me/api/";
 
 @implementation JSONDownloader
 
-- (instancetype) initWithConfiguration:(NSURLSessionConfiguration *)configuration {
-    self.session = [NSURLSession sessionWithConfiguration: configuration];
-    return self;
-}
-
 - (instancetype) init {
-    NSURLSessionConfiguration* defaultConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    return [[JSONDownloader alloc] initWithConfiguration:defaultConfiguration];
+    self = [super init];
+    return self;
 }
 
 - (void)downloadDataWithURL:(NSURL *)url completion:(void (^)(NSArray *, NSError *))completion {
@@ -66,7 +61,7 @@ NSString* const kAPIURL = @"https://randomuser.me/api/";
         }
         NSArray *jsonData = [responseDictionary valueForKeyPath:@"results"];
         if(!jsonData) {
-            NetworkError* error = [NetworkError errorWithErrorCode:NetworkErrorGotNilResults];
+            NetworkError* error = [NetworkError errorWithErrorCode:NetworkErrorGotNilResult];
             if (completion)
                 completion(nil, error);
             return;

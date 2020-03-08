@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "JSONDownloader.h"
 #import "JSONParser.h"
+#import "ThumbnailDownloader.h"
 #import "StudentCell.h"
 #import "MainTableViewHelper.h"
 
 @interface MainViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UINavigationItem *mainNavigationItem;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *leftBarButtonItem;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *rightBarButtonItem;

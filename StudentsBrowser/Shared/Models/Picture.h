@@ -13,6 +13,9 @@
 @property(nonatomic) NSString* largePictureURLString;
 @property(nonatomic) NSString* mediumPictureURLString;
 @property(nonatomic) NSString* thumbnailPictureURLString;
+@property(nonatomic) NSData* largePicture;
+@property(nonatomic) NSData* mediumPicture;
+@property(nonatomic) NSData* thumbnailPicture;
 
 - (NSString*) description;
 

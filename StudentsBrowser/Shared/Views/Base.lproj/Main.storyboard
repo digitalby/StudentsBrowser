@@ -53,6 +53,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="leftBarButtonItem" destination="AIX-Ou-gkD" id="w88-XR-fE6"/>
+                        <outlet property="mainNavigationItem" destination="q5z-yU-1ac" id="BdK-AO-p8u"/>
                         <outlet property="rightBarButtonItem" destination="2hW-k6-nwR" id="Wev-tg-hjX"/>
                         <outlet property="tableView" destination="qis-12-67v" id="aWl-t7-8Kt"/>
                     </connections>

@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, NetworkErrorCode) {
     NetworkErrorInvalidData,
     NetworkErrorEmptyResponseDictionary,
     NetworkErrorGotErrorResponse,
-    NetworkErrorGotNilResults,
+    NetworkErrorGotNilResult,
     NetworkErrorParsingFailed
 };
 
