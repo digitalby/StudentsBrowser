@@ -12,9 +12,9 @@
 #define Gender_h
 
 typedef NS_ENUM(NSInteger, Gender) {
+    GenderUndefined,
     GenderMale,
-    GenderFemale,
-    GenderUndefined
+    GenderFemale
 };
 
 #endif

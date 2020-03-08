@@ -10,7 +10,7 @@
 #import "MainViewController.h"
 #import "ViewControllerHelper.h"
 
-@interface MainTableViewHelper : NSObject<ViewControllerHelper, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating>
+@interface MainTableViewHelper : NSObject<ViewControllerHelper, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate>
 
 @property (weak, nonatomic) UIViewController* _Nullable viewController;
 

@@ -33,6 +33,7 @@
     self.tableViewHelper = [[MainTableViewHelper alloc]initWithViewController:self];
     self.tableView.dataSource = self.tableViewHelper;
     self.tableView.delegate = self.tableViewHelper;
+    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
 
     self.peopleDownloader = [[JSONDownloader alloc]init];
     self.peopleParser = [[JSONParser alloc]init];

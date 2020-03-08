@@ -34,7 +34,8 @@
 }
 
 - (BOOL) filteringIsInProgress {
-    return self.searchController.isActive && ![self searchBarIsEmpty];
+    BOOL isFilteringScope = self.searchController.searchBar.selectedScopeButtonIndex != 0;
+    return self.searchController.isActive && (![self searchBarIsEmpty] || isFilteringScope);
 }
 
 - (void) setupSearchController {
@@ -42,29 +43,63 @@
     self.searchController.searchResultsUpdater = self;
     self.searchController.obscuresBackgroundDuringPresentation = NO;
     self.searchController.searchBar.placeholder = @"Search People";
+    self.searchController.searchBar.scopeButtonTitles = @[@"Any", @"Male", @"Female"];
+    self.searchController.searchBar.delegate = self;
     self.viewController.navigationItem.searchController = self.searchController;
     self.viewController.definesPresentationContext = YES;
 }
 
-- (void) filterForSearchText:(NSString* _Nonnull)text {
+- (void) filterForSearchText:(NSString* _Nonnull)text andGender:(Gender)gender {
     MainViewController* viewController = (MainViewController*)self.viewController;
     if(!viewController)
         return;
     NSArray* filteredArray = [[NSArray alloc]init];
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"(fullName.firstName CONTAINS[cd] %@) OR (fullName.lastName CONTAINS[cd] %@)", text, text];
+    NSPredicate* genderPredicate;
+    if (gender != GenderUndefined)
+        genderPredicate = [NSPredicate predicateWithFormat:@"gender == %d", gender];
+    else
+        genderPredicate = [NSPredicate predicateWithValue:YES];
+    filteredArray = [viewController.arrayOfPeople filteredArrayUsingPredicate:genderPredicate];
+    if (![self searchBarIsEmpty]) {
+        NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"(fullName.firstName CONTAINS[cd] %@) OR (fullName.lastName CONTAINS[cd] %@)", text, text];
+        filteredArray = [viewController.arrayOfPeople filteredArrayUsingPredicate:namePredicate];
+    }
 
-    filteredArray = [viewController.arrayOfPeople filteredArrayUsingPredicate:predicate];
     self.arrayOfPeopleFromSearch = filteredArray;
     [viewController.tableView reloadData];
+}
+
+- (void) filterForSearchText:(NSString* _Nonnull)text {
+    [self filterForSearchText:text andGender:GenderUndefined];
+}
+
+#pragma mark - Search Bar Delegate
+
+- (void) searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
+    Gender gender;
+    switch (selectedScope) {
+        case 1:
+            gender = GenderMale;
+            break;
+        case 2:
+            gender = GenderFemale;
+            break;
+        default:
+            gender = GenderUndefined;
+            break;
+    }
+    NSString* text = self.searchController.searchBar.text;
+    [self filterForSearchText:text andGender:gender];
 }
 
 #pragma mark - Search Results Updating
 
 - (void)updateSearchResultsForSearchController:(nonnull UISearchController *)searchController {
     UISearchBar* searchBar = searchController.searchBar;
+    Gender selectedGender = searchBar.selectedScopeButtonIndex;
     NSString* searchText = searchBar.text;
     if (searchText) {
-        [self filterForSearchText:searchText];
+        [self filterForSearchText:searchText andGender:selectedGender];
     }
 }
 
