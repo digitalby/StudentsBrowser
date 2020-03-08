@@ -39,14 +39,6 @@
                 completion(nil, error);
             return;
         }
-//        UIImage* image = [[UIImage alloc]initWithData:data];
-//        if (!image) {
-//            NetworkError* error = [NetworkError errorWithErrorCode:NetworkErrorGotNilResult];
-//            if (completion)
-//                completion(nil, error);
-//            return;
-//        }
-
         if (completion)
             completion(data, nil);
     }];

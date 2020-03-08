@@ -62,6 +62,7 @@
                 return;
             }
             if (json) {
+                [self clearPersistentThumbnails];
                 [self parsePeopleFromJSONArray:json];
                 [self.throbber stopAnimating];
                 [self.tableView.refreshControl endRefreshing];
@@ -79,13 +80,39 @@
         return [lhs.fullName.lastName compare:rhs.fullName.lastName];
     }];
     [self.tableView reloadData];
+    NSUInteger numberOfPeople = self.arrayOfPeople.count;
+    [NSUserDefaults.standardUserDefaults setInteger:numberOfPeople forKey:@"thumbnails"];
+    [self retrievePersistentThumbnails];
     [self downloadThumbnails];
+}
+
+- (void) clearPersistentThumbnails {
+    NSUInteger numberOfPersistentPeople = [NSUserDefaults.standardUserDefaults integerForKey:@"thumbnails"];
+    for (NSUInteger i = 0; i < numberOfPersistentPeople; i++) {
+        NSString *persistentKey = [NSString stringWithFormat:@"thumbnail%tu", i];
+        [NSUserDefaults.standardUserDefaults setObject:nil forKey:persistentKey];
+    }
+}
+
+- (void) retrievePersistentThumbnails {
+    NSUInteger numberOfPeople = [NSUserDefaults.standardUserDefaults integerForKey:@"thumbnails"];
+    for (NSUInteger i = 0; i < numberOfPeople; i++) {
+        Person* person = [self.arrayOfPeople objectAtIndex:i];
+        if (!person || person.picture.thumbnailPicture)
+            continue;
+        NSString *persistentKey = [NSString stringWithFormat:@"thumbnail%tu", i];
+        NSData *persistentThumbnail = [NSUserDefaults.standardUserDefaults dataForKey:persistentKey];
+        if (persistentThumbnail)
+            person.picture.thumbnailPicture = persistentThumbnail;
+    }
+    [self.tableView reloadData];
 }
 
 - (void) downloadThumbnails {
     [self.thumbnailDownloader cancelOperations];
-    for (Person* person in self.arrayOfPeople) {
-        if (person.picture.thumbnailPicture)
+    for (NSUInteger i = 0; i < self.arrayOfPeople.count; i++) {
+        Person* person = [self.arrayOfPeople objectAtIndex:i];
+        if (!person || person.picture.thumbnailPicture)
             continue;
         NSString* thumbnailURLString = person.picture.thumbnailPictureURLString;
         if (!thumbnailURLString)
@@ -100,6 +127,8 @@
                     return;
                 }
                 if (imageData) {
+                    NSString *persistentKey = [NSString stringWithFormat:@"thumbnail%tu", i];
+                    [NSUserDefaults.standardUserDefaults setObject:imageData forKey:persistentKey];
                     person.picture.thumbnailPicture = imageData;
                     [self.tableView reloadData];
                 }
