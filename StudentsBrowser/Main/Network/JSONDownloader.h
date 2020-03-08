@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) downloadDataWithURL:(NSURL*)url completion:(void (^_Nullable)(NSArray* _Nullable json, NSError* _Nullable error))completion;
 - (void) downloadDataWithCompletion:(void (^_Nullable)(NSArray* _Nullable json, NSError* _Nullable error))completion;
 - (void) downloadDataWithAmount:(NSUInteger)amount completion:(void (^_Nullable)(NSArray* _Nullable json, NSError* _Nullable error))completion;
+- (void) validateJSONData:(NSData* _Nonnull)jsonData completion:(void (^_Nullable)(NSArray* _Nullable json, NSError* _Nullable error))completion;
 
 @end
 

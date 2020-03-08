@@ -10,7 +10,7 @@
 
 @implementation JSONParser
 
-- (NSArray*)getPeopleFromJSONArray:(NSArray *)jsonArray {
+- (NSArray<Person*>*)getPeopleFromJSONArray:(NSArray*)jsonArray {
     NSMutableArray * arrayOfPeople = [[NSMutableArray alloc]init];
 
     for (NSDictionary *personDictionary in jsonArray) {

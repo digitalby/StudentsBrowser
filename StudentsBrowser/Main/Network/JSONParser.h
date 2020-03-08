@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSONParser : NSObject
 
-- (NSArray* _Nonnull)getPeopleFromJSONArray:(NSArray* _Nonnull)jsonArray;
+- (NSArray<Person*>* _Nonnull)getPeopleFromJSONArray:(NSArray* _Nonnull)jsonArray;
 
 @end
 

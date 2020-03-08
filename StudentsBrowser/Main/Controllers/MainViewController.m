@@ -40,7 +40,16 @@
     self.peopleDownloader = [[JSONDownloader alloc]init];
     self.peopleParser = [[JSONParser alloc]init];
     self.thumbnailDownloader = [[ThumbnailDownloader alloc]init];
-    [self downloadPeople];
+
+    NSData* persistentPeople = [NSUserDefaults.standardUserDefaults dataForKey:@"people"];
+    if (persistentPeople) {
+        [self.peopleDownloader validateJSONData:persistentPeople completion:^(NSArray * _Nullable json, NSError * _Nullable error) {
+            if (!error && json)
+                [self parsePeopleFromJSONArray:json];
+        }];
+    } else {
+        [self downloadPeople];
+    }
 }
 
 - (void) downloadPeople {
@@ -53,20 +62,24 @@
                 return;
             }
             if (json) {
-                NSArray *people = [self.peopleParser getPeopleFromJSONArray:json];
-                self.arrayOfPeople = people;
-                self.arrayOfPeople = [self.arrayOfPeople sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-                    Person *lhs = (Person *)obj1;
-                    Person *rhs = (Person *)obj2;
-                    return [lhs.fullName.lastName compare:rhs.fullName.lastName];
-                }];
+                [self parsePeopleFromJSONArray:json];
                 [self.throbber stopAnimating];
                 [self.tableView.refreshControl endRefreshing];
-                [self.tableView reloadData];
-                [self downloadThumbnails];
             }
         });
     }];
+}
+
+- (void) parsePeopleFromJSONArray:(NSArray*)array {
+    NSArray *people = [self.peopleParser getPeopleFromJSONArray:array];
+    self.arrayOfPeople = people;
+    self.arrayOfPeople = [self.arrayOfPeople sortedArrayUsingComparator:^NSComparisonResult(id _Nonnull obj1, id _Nonnull obj2) {
+        Person *lhs = (Person *)obj1;
+        Person *rhs = (Person *)obj2;
+        return [lhs.fullName.lastName compare:rhs.fullName.lastName];
+    }];
+    [self.tableView reloadData];
+    [self downloadThumbnails];
 }
 
 - (void) downloadThumbnails {
