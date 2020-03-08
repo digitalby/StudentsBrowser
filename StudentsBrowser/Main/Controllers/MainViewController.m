@@ -34,6 +34,8 @@
     self.tableView.dataSource = self.tableViewHelper;
     self.tableView.delegate = self.tableViewHelper;
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    self.tableView.refreshControl = [[UIRefreshControl alloc]init];
+    [self.tableView.refreshControl addTarget:self action:@selector(downloadPeople) forControlEvents:UIControlEventValueChanged];
 
     self.peopleDownloader = [[JSONDownloader alloc]init];
     self.peopleParser = [[JSONParser alloc]init];
@@ -59,6 +61,7 @@
                     return [lhs.fullName.lastName compare:rhs.fullName.lastName];
                 }];
                 [self.throbber stopAnimating];
+                [self.tableView.refreshControl endRefreshing];
                 [self.tableView reloadData];
                 [self downloadThumbnails];
             }
