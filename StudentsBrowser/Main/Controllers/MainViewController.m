@@ -92,6 +92,8 @@
         Person *rhs = (Person *)obj2;
         return [lhs.fullName.lastName compare:rhs.fullName.lastName];
     }];
+    [self.tableViewHelper updateUniqueFirstLetters];
+    [self.tableViewHelper updateSectionedData];
     [self.tableView reloadData];
     NSUInteger numberOfPeople = self.arrayOfPeople.count;
     [NSUserDefaults.standardUserDefaults setInteger:numberOfPeople forKey:@"thumbnails"];

@@ -19,19 +19,24 @@
 
 - (instancetype)initWithViewController:(UIViewController *)viewController {
     self.viewController = viewController;
+
+    self.sectionedData = [[NSArray alloc]init];
+    self.uniqueFirstLetters = [[NSArray alloc]init];
+
     self.arrayOfPeopleFromSearch = [[NSArray alloc]init];
     [self setupSearchController];
+
     return self;
 }
 
 #pragma mark - Data helpers
 
-- (NSArray<NSArray<Person *> *> *)sectionedData {
+- (void)updateSectionedData {
     NSArray *uniqueFirstLetters = self.uniqueFirstLetters;
 
     NSArray<Person *> * data = self.currentArrayOfPeople;
 
-    NSMutableArray * sectionedData = [[NSMutableArray alloc]init];
+    NSMutableArray<NSArray<Person *> *> * sectionedData = [[NSMutableArray alloc]init];
     for (NSString * lhs in uniqueFirstLetters) {
         NSMutableArray<Person *> * dataInSection = [[NSMutableArray alloc] init];
 
@@ -57,10 +62,10 @@
         }];
         [sectionedData addObject:dataInSection];
     }
-    return sectionedData;
+    self.sectionedData = sectionedData;
 }
 
-- (NSArray<NSString *> *)uniqueFirstLetters {
+- (void)updateUniqueFirstLetters {
     NSMutableArray<NSString *> * firstLetters = [[NSMutableArray alloc]init];
 
     NSArray<Person *> * data = self.currentArrayOfPeople;
@@ -80,11 +85,11 @@
         [firstLetters addObject:letter];
     }
 
-    NSSet *setOfLetters = [NSSet setWithArray:firstLetters];
+    NSSet<NSString *> *setOfLetters = [NSSet setWithArray:firstLetters];
     NSSortDescriptor *descriptor = [[NSSortDescriptor alloc]initWithKey:nil ascending:YES];
-    NSArray *sortedArrayOfUniqueLetters = [setOfLetters sortedArrayUsingDescriptors:@[descriptor]];
+    NSArray<NSString *> *sortedArrayOfUniqueLetters = [setOfLetters sortedArrayUsingDescriptors:@[descriptor]];
 
-    return sortedArrayOfUniqueLetters;
+    self.uniqueFirstLetters = sortedArrayOfUniqueLetters;
 }
 
 - (NSArray<Person *> *)currentArrayOfPeople {
@@ -140,10 +145,12 @@
     filteredArray = [viewController.arrayOfPeople filteredArrayUsingPredicate:genderPredicate];
     if (![self searchBarIsEmpty]) {
         NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"(fullName.firstName CONTAINS[cd] %@) OR (fullName.lastName CONTAINS[cd] %@)", text, text];
-        filteredArray = [viewController.arrayOfPeople filteredArrayUsingPredicate:namePredicate];
+        filteredArray = [filteredArray filteredArrayUsingPredicate:namePredicate];
     }
 
     self.arrayOfPeopleFromSearch = filteredArray;
+    [self updateUniqueFirstLetters];
+    [self updateSectionedData];
     [viewController.tableView reloadData];
 }
 
