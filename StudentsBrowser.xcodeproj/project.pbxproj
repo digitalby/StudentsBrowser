@@ -11,12 +11,13 @@
 		ED58201C2414F2100001FDC8 /* ThumbnailDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58201B2414F2100001FDC8 /* ThumbnailDownloader.m */; };
 		ED5820202414F2790001FDC8 /* Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58201F2414F2790001FDC8 /* Downloader.m */; };
 		ED582023241596530001FDC8 /* NSError+MakeUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = ED582022241596530001FDC8 /* NSError+MakeUserInfo.m */; };
+		ED58202D2416C9840001FDC8 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED58202C2416C9840001FDC8 /* MainViewController.storyboard */; };
 		ED884D87240A8C8400095134 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED884D86240A8C8400095134 /* MainViewController.m */; };
 		ED884DA2240A91B100095134 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED884D9C240A91B100095134 /* LaunchScreen.storyboard */; };
 		ED884DA3240A91B100095134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED884D9E240A91B100095134 /* main.m */; };
 		ED884DA4240A91B100095134 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED884D9F240A91B100095134 /* AppDelegate.m */; };
 		ED884DA6240A924200095134 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED884D9B240A91B100095134 /* Assets.xcassets */; };
-		ED884DA7240A927B00095134 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED884D88240A8C8400095134 /* Main.storyboard */; };
+		ED884DA7240A927B00095134 /* Entry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED884D88240A8C8400095134 /* Entry.storyboard */; };
 		EDD70574241279880015EE32 /* JSONDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD70573241279880015EE32 /* JSONDownloader.m */; };
 		EDD7057724127F990015EE32 /* NetworkError.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD7057624127F990015EE32 /* NetworkError.m */; };
 		EDD7057A241287230015EE32 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD70579241287230015EE32 /* Person.m */; };
@@ -39,10 +40,11 @@
 		ED58201F2414F2790001FDC8 /* Downloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Downloader.m; sourceTree = "<group>"; };
 		ED582021241596530001FDC8 /* NSError+MakeUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSError+MakeUserInfo.h"; sourceTree = "<group>"; };
 		ED582022241596530001FDC8 /* NSError+MakeUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSError+MakeUserInfo.m"; sourceTree = "<group>"; };
+		ED58202C2416C9840001FDC8 /* MainViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainViewController.storyboard; sourceTree = "<group>"; };
 		ED884D7C240A8C8400095134 /* StudentsBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentsBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED884D85240A8C8400095134 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		ED884D86240A8C8400095134 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		ED884D89240A8C8400095134 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ED884D89240A8C8400095134 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Entry.storyboard; sourceTree = "<group>"; };
 		ED884D9A240A91B100095134 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ED884D9B240A91B100095134 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED884D9D240A91B100095134 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -124,7 +126,7 @@
 		ED5604D8241437A800E00971 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				ED884D88240A8C8400095134 /* Main.storyboard */,
+				ED884D88240A8C8400095134 /* Entry.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -191,6 +193,7 @@
 		ED884DA8240A972700095134 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ED58202C2416C9840001FDC8 /* MainViewController.storyboard */,
 				EDE1D204240A9896009CFA60 /* StudentCell.h */,
 				EDE1D205240A9896009CFA60 /* StudentCell.m */,
 			);
@@ -314,9 +317,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED58202D2416C9840001FDC8 /* MainViewController.storyboard in Resources */,
 				ED884DA2240A91B100095134 /* LaunchScreen.storyboard in Resources */,
 				ED884DA6240A924200095134 /* Assets.xcassets in Resources */,
-				ED884DA7240A927B00095134 /* Main.storyboard in Resources */,
+				ED884DA7240A927B00095134 /* Entry.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,12 +354,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		ED884D88240A8C8400095134 /* Main.storyboard */ = {
+		ED884D88240A8C8400095134 /* Entry.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				ED884D89240A8C8400095134 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Entry.storyboard;
 			sourceTree = "<group>";
 		};
 		ED884D9C240A91B100095134 /* LaunchScreen.storyboard */ = {
