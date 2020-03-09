@@ -12,6 +12,8 @@
 		ED5820202414F2790001FDC8 /* Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58201F2414F2790001FDC8 /* Downloader.m */; };
 		ED582023241596530001FDC8 /* NSError+MakeUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = ED582022241596530001FDC8 /* NSError+MakeUserInfo.m */; };
 		ED58202D2416C9840001FDC8 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED58202C2416C9840001FDC8 /* MainViewController.storyboard */; };
+		ED5820342416CAE30001FDC8 /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5820332416CAE30001FDC8 /* PersonViewController.m */; };
+		ED5820362416CC4A0001FDC8 /* PersonViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED5820352416CC4A0001FDC8 /* PersonViewController.storyboard */; };
 		ED884D87240A8C8400095134 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED884D86240A8C8400095134 /* MainViewController.m */; };
 		ED884DA2240A91B100095134 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED884D9C240A91B100095134 /* LaunchScreen.storyboard */; };
 		ED884DA3240A91B100095134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED884D9E240A91B100095134 /* main.m */; };
@@ -41,6 +43,9 @@
 		ED582021241596530001FDC8 /* NSError+MakeUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSError+MakeUserInfo.h"; sourceTree = "<group>"; };
 		ED582022241596530001FDC8 /* NSError+MakeUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSError+MakeUserInfo.m"; sourceTree = "<group>"; };
 		ED58202C2416C9840001FDC8 /* MainViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainViewController.storyboard; sourceTree = "<group>"; };
+		ED5820322416CAE30001FDC8 /* PersonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonViewController.h; sourceTree = "<group>"; };
+		ED5820332416CAE30001FDC8 /* PersonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonViewController.m; sourceTree = "<group>"; };
+		ED5820352416CC4A0001FDC8 /* PersonViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PersonViewController.storyboard; sourceTree = "<group>"; };
 		ED884D7C240A8C8400095134 /* StudentsBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentsBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED884D85240A8C8400095134 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		ED884D86240A8C8400095134 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -151,6 +156,40 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		ED58202E2416CA910001FDC8 /* Person */ = {
+			isa = PBXGroup;
+			children = (
+				ED5820312416CACB0001FDC8 /* Network */,
+				ED58202F2416CABE0001FDC8 /* Views */,
+				ED5820302416CAC30001FDC8 /* Controllers */,
+			);
+			path = Person;
+			sourceTree = "<group>";
+		};
+		ED58202F2416CABE0001FDC8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ED5820352416CC4A0001FDC8 /* PersonViewController.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ED5820302416CAC30001FDC8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ED5820322416CAE30001FDC8 /* PersonViewController.h */,
+				ED5820332416CAE30001FDC8 /* PersonViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		ED5820312416CACB0001FDC8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		ED884D73240A8C8400095134 = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +211,7 @@
 			children = (
 				ED5604D52414376600E00971 /* Shared */,
 				ED884D99240A91B100095134 /* Supporting files */,
+				ED58202E2416CA910001FDC8 /* Person */,
 				ED5604D9241437C800E00971 /* Main */,
 			);
 			path = StudentsBrowser;
@@ -318,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED58202D2416C9840001FDC8 /* MainViewController.storyboard in Resources */,
+				ED5820362416CC4A0001FDC8 /* PersonViewController.storyboard in Resources */,
 				ED884DA2240A91B100095134 /* LaunchScreen.storyboard in Resources */,
 				ED884DA6240A924200095134 /* Assets.xcassets in Resources */,
 				ED884DA7240A927B00095134 /* Entry.storyboard in Resources */,
@@ -336,6 +377,7 @@
 				EDD7059024142F060015EE32 /* NSURL+Query.m in Sources */,
 				EDD7058C2412BBD50015EE32 /* JSONParser.m in Sources */,
 				EDD7057724127F990015EE32 /* NetworkError.m in Sources */,
+				ED5820342416CAE30001FDC8 /* PersonViewController.m in Sources */,
 				EDD7058324128D3E0015EE32 /* Login.m in Sources */,
 				ED5820202414F2790001FDC8 /* Downloader.m in Sources */,
 				EDD7058924128E540015EE32 /* Location.m in Sources */,

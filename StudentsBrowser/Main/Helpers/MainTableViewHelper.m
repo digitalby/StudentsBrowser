@@ -256,11 +256,7 @@
     if (!person) {
         return;
     }
-    NSString* message = [NSString stringWithFormat:@"You selected %@", [person.fullName makeFullName]];
-    UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Delegate" message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-    [alertController addAction:okAction];
-    [viewController presentViewController:alertController animated:YES completion:nil];
+    [viewController performSegueWithIdentifier:@"ShowPerson" sender:self.viewController];
 }
 
 @end
