@@ -33,7 +33,6 @@
     self.tableViewHelper = [[MainTableViewHelper alloc]initWithViewController:self];
     self.tableView.dataSource = self.tableViewHelper;
     self.tableView.delegate = self.tableViewHelper;
-    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.tableView.refreshControl = [[UIRefreshControl alloc]init];
     [self.tableView.refreshControl addTarget:self action:@selector(downloadPeople) forControlEvents:UIControlEventValueChanged];
 
