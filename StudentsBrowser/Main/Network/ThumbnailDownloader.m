@@ -21,22 +21,23 @@
     NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
         if (!httpResponse) {
-            NetworkError *error = [NetworkError errorWithErrorCode:NetworkErrorRequestFailed];
+            NetworkError *networkError = [NetworkError errorWithErrorCode:NetworkErrorRequestFailed andExtraData:error];
             if (completion)
-                completion(nil, error);
+                completion(nil, networkError);
             return;
         }
-        if (httpResponse.statusCode != 200) {
-            NetworkError *error = [NetworkError errorWithErrorCode:NetworkErrorBadResponse];
+        NSInteger statusCode = httpResponse.statusCode;
+        if (statusCode != 200) {
+            NetworkError *networkError = [NetworkError errorWithErrorCode:NetworkErrorBadResponse andExtraData:@(statusCode)];
             if (completion)
-                completion(nil, error);
+                completion(nil, networkError);
             return;
         }
         NSData *data = [[NSData alloc] initWithContentsOfURL:location];
         if (!data) {
-            NetworkError *error = [NetworkError errorWithErrorCode:NetworkErrorInvalidData];
+            NetworkError *networkError = [NetworkError errorWithErrorCode:NetworkErrorInvalidData];
             if (completion)
-                completion(nil, error);
+                completion(nil, networkError);
             return;
         }
         if (completion)

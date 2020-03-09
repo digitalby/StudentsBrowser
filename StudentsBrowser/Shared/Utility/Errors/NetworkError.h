@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-NS_ASSUME_NONNULL_BEGIN
+#import "NSError+MakeUserInfo.h"
 
 @interface NetworkError : NSError
 
@@ -23,8 +22,7 @@ typedef NS_ENUM(NSInteger, NetworkErrorCode) {
     NetworkErrorParsingFailed
 };
 
-+ (instancetype) errorWithErrorCode:(NetworkErrorCode)errorCode;
++ (instancetype _Nonnull) errorWithErrorCode:(NetworkErrorCode)errorCode;
++ (instancetype _Nonnull) errorWithErrorCode:(NetworkErrorCode)errorCode andExtraData:(id _Nullable)data;
 
 @end
-
-NS_ASSUME_NONNULL_END

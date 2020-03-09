@@ -57,15 +57,28 @@
     [self.peopleDownloader cancelOperations];
     [self.peopleDownloader downloadDataWithAmount:50 completion:^(NSArray * _Nullable json, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self.throbber stopAnimating];
+            [self.tableView.refreshControl endRefreshing];
             if (error) {
-                NSLog(@"%@", error.description);
+                NSString *title = [[NSString alloc]init];
+                NSString *message = [[NSString alloc]init];
+                NetworkError* networkError = (NetworkError*)error;
+                if (networkError) {
+                    title = networkError.localizedDescription;
+                    message = networkError.localizedFailureReason;
+                } else {
+                    title = @"Error";
+                    message = error.localizedDescription;
+                }
+                UIAlertController* alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                [alertController addAction:okAction];
+                [self presentViewController:alertController animated:YES completion:nil];
                 return;
             }
             if (json) {
                 [self clearPersistentThumbnails];
                 [self parsePeopleFromJSONArray:json];
-                [self.throbber stopAnimating];
-                [self.tableView.refreshControl endRefreshing];
             }
         });
     }];

@@ -10,6 +10,7 @@
 		ED5604D12414332A00E00971 /* MainTableViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5604D02414332A00E00971 /* MainTableViewHelper.m */; };
 		ED58201C2414F2100001FDC8 /* ThumbnailDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58201B2414F2100001FDC8 /* ThumbnailDownloader.m */; };
 		ED5820202414F2790001FDC8 /* Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58201F2414F2790001FDC8 /* Downloader.m */; };
+		ED582023241596530001FDC8 /* NSError+MakeUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = ED582022241596530001FDC8 /* NSError+MakeUserInfo.m */; };
 		ED884D87240A8C8400095134 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED884D86240A8C8400095134 /* MainViewController.m */; };
 		ED884DA2240A91B100095134 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED884D9C240A91B100095134 /* LaunchScreen.storyboard */; };
 		ED884DA3240A91B100095134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED884D9E240A91B100095134 /* main.m */; };
@@ -36,6 +37,8 @@
 		ED58201B2414F2100001FDC8 /* ThumbnailDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThumbnailDownloader.m; sourceTree = "<group>"; };
 		ED58201E2414F2790001FDC8 /* Downloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Downloader.h; sourceTree = "<group>"; };
 		ED58201F2414F2790001FDC8 /* Downloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Downloader.m; sourceTree = "<group>"; };
+		ED582021241596530001FDC8 /* NSError+MakeUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSError+MakeUserInfo.h"; sourceTree = "<group>"; };
+		ED582022241596530001FDC8 /* NSError+MakeUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSError+MakeUserInfo.m"; sourceTree = "<group>"; };
 		ED884D7C240A8C8400095134 /* StudentsBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentsBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED884D85240A8C8400095134 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		ED884D86240A8C8400095134 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -237,6 +240,8 @@
 		EDD7058D24142EC00015EE32 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				ED582021241596530001FDC8 /* NSError+MakeUserInfo.h */,
+				ED582022241596530001FDC8 /* NSError+MakeUserInfo.m */,
 				EDD7058E24142F060015EE32 /* NSURL+Query.h */,
 				EDD7058F24142F060015EE32 /* NSURL+Query.m */,
 			);
@@ -338,6 +343,7 @@
 				EDD70574241279880015EE32 /* JSONDownloader.m in Sources */,
 				ED5604D12414332A00E00971 /* MainTableViewHelper.m in Sources */,
 				EDE1D206240A9896009CFA60 /* StudentCell.m in Sources */,
+				ED582023241596530001FDC8 /* NSError+MakeUserInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,14 +32,14 @@ NSString* const kAPIURL = @"https://randomuser.me/api/";
     }
     NSString* jsonError = [responseDictionary valueForKey:@"error"];
     if(jsonError) {
-        NetworkError* error = [NetworkError errorWithErrorCode:NetworkErrorGotErrorResponse];
+        NetworkError *error = [NetworkError errorWithErrorCode:NetworkErrorGotErrorResponse andExtraData:jsonError];
         if (completion)
             completion(nil, error);
         return;
     }
     NSArray *jsonArray = [responseDictionary valueForKeyPath:@"results"];
     if(!jsonArray) {
-        NetworkError* error = [NetworkError errorWithErrorCode:NetworkErrorGotNilResult];
+        NetworkError *error = [NetworkError errorWithErrorCode:NetworkErrorGotNilResult];
         if (completion)
             completion(nil, error);
         return;
@@ -54,22 +54,23 @@ NSString* const kAPIURL = @"https://randomuser.me/api/";
     NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
         if (!httpResponse) {
-            NetworkError *error = [NetworkError errorWithErrorCode:NetworkErrorRequestFailed];
+            NetworkError *networkError = [NetworkError errorWithErrorCode:NetworkErrorRequestFailed andExtraData:error];
             if (completion)
-                completion(nil, error);
+                completion(nil, networkError);
             return;
         }
-        if (httpResponse.statusCode != 200) {
-            NetworkError *error = [NetworkError errorWithErrorCode:NetworkErrorBadResponse];
+        NSInteger statusCode = httpResponse.statusCode;
+        if (statusCode != 200) {
+            NetworkError *networkError = [NetworkError errorWithErrorCode:NetworkErrorBadResponse andExtraData:@(statusCode)];
             if (completion)
-                completion(nil, error);
+                completion(nil, networkError);
             return;
         }
         NSData *data = [[NSData alloc] initWithContentsOfURL:location];
         if (!data) {
-            NetworkError *error = [NetworkError errorWithErrorCode:NetworkErrorInvalidData];
+            NetworkError *networkError = [NetworkError errorWithErrorCode:NetworkErrorInvalidData];
             if (completion)
-                completion(nil, error);
+                completion(nil, networkError);
             return;
         }
         [NSUserDefaults.standardUserDefaults setObject:data forKey:@"people"];
@@ -92,9 +93,10 @@ NSString* const kAPIURL = @"https://randomuser.me/api/";
 }
 
 - (void) downloadDataWithAmount:(NSUInteger)amount completion:(void (^)(NSArray* json, NSError* error))completion {
-    NSURL *url = [[NSURL alloc] initWithString:kAPIURL];
+    NSString *urlString = kAPIURL;
+    NSURL *url = [[NSURL alloc] initWithString:urlString];
     if (!url) {
-        NetworkError* error = [NetworkError errorWithErrorCode:NetworkErrorURLError];
+        NetworkError* error = [NetworkError errorWithErrorCode:NetworkErrorURLError andExtraData:urlString];
         if (completion)
             completion(nil, error);
         return;
