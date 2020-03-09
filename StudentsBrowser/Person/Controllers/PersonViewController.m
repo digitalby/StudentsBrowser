@@ -19,14 +19,37 @@
     // Do any additional setup after loading the view.
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - Actions
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)didTapTitle:(id)sender {
 }
-*/
+- (IBAction)didTapGender:(id)sender {
+}
+- (IBAction)didTapNationality:(id)sender {
+}
+- (IBAction)didTapEmail:(id)sender {
+}
+- (IBAction)didTapUsername:(id)sender {
+}
+- (IBAction)didTapPassword:(id)sender {
+}
+- (IBAction)didTapDateOfBirth:(id)sender {
+}
+- (IBAction)didTapAge:(id)sender {
+}
+- (IBAction)didTapCellPhone:(id)sender {
+}
+- (IBAction)didTapPhone:(id)sender {
+}
+- (IBAction)didTapCountry:(id)sender {
+}
+- (IBAction)didTapState:(id)sender {
+}
+- (IBAction)didTapCity:(id)sender {
+}
+- (IBAction)didTapStreet:(id)sender {
+}
+- (IBAction)didTapTimeZone:(id)sender {
+}
 
 @end
