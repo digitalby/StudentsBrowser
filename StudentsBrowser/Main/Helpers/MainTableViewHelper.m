@@ -24,6 +24,84 @@
     return self;
 }
 
+#pragma mark - Data helpers
+
+- (NSArray<NSArray<Person *> *> *)sectionedData {
+    NSArray *uniqueFirstLetters = self.uniqueFirstLetters;
+
+    NSArray<Person *> * data = self.currentArrayOfPeople;
+
+    NSMutableArray * sectionedData = [[NSMutableArray alloc]init];
+    for (NSString * lhs in uniqueFirstLetters) {
+        NSMutableArray<Person *> * dataInSection = [[NSMutableArray alloc] init];
+
+        for (Person * person in data) {
+            NSString *rhs;
+            if (!person.fullName || !person.fullName.lastName)
+                continue;
+            rhs = [person.fullName.lastName substringToIndex:1];
+            if (!rhs)
+                continue;
+            rhs = [rhs stringByApplyingTransform:NSStringTransformStripCombiningMarks reverse:NO];
+            rhs = [rhs uppercaseString];
+            if ([rhs rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]].location == NSNotFound)
+                rhs = @"#";
+
+            if ([lhs isEqualToString:rhs])
+                [dataInSection addObject:person];
+        }
+        [dataInSection sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            Person *lhs = (Person *)obj1;
+            Person *rhs = (Person *)obj2;
+            return [lhs.fullName.lastName compare:rhs.fullName.lastName];
+        }];
+        [sectionedData addObject:dataInSection];
+    }
+    return sectionedData;
+}
+
+- (NSArray<NSString *> *)uniqueFirstLetters {
+    NSMutableArray<NSString *> * firstLetters = [[NSMutableArray alloc]init];
+
+    NSArray<Person *> * data = self.currentArrayOfPeople;
+
+    for (Person* person in data) {
+        NSString *letter;
+        if (!person.fullName || !person.fullName.lastName)
+            continue;
+        letter = [person.fullName.lastName substringToIndex:1];
+        if (!letter)
+            continue;
+        letter = [letter stringByApplyingTransform:NSStringTransformStripCombiningMarks reverse:NO];
+        letter = [letter uppercaseString];
+        if ([letter rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]].location == NSNotFound)
+            letter = @"#";
+
+        [firstLetters addObject:letter];
+    }
+
+    NSSet *setOfLetters = [NSSet setWithArray:firstLetters];
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc]initWithKey:nil ascending:YES];
+    NSArray *sortedArrayOfUniqueLetters = [setOfLetters sortedArrayUsingDescriptors:@[descriptor]];
+
+    return sortedArrayOfUniqueLetters;
+}
+
+- (NSArray<Person *> *)currentArrayOfPeople {
+    NSArray<Person *> * data = [[NSArray alloc]init];
+    MainViewController* viewController = (MainViewController*)self.viewController;
+    if(!viewController)
+        return data;
+
+    if ([self filteringIsInProgress]) {
+        data = self.arrayOfPeopleFromSearch;
+    } else {
+        data = viewController.arrayOfPeople;
+    }
+
+    return data;
+}
+
 #pragma mark - Search Helpers
 
 - (BOOL) searchBarIsEmpty {
@@ -106,20 +184,15 @@
 #pragma mark - Data Source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return self.sectionedData.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    MainViewController* viewController = (MainViewController*)self.viewController;
-    if(!viewController)
+    NSArray * dataInSection = [self.sectionedData objectAtIndex:section];
+    if (!dataInSection)
         return 0;
-    NSInteger count;
-    if ([self filteringIsInProgress]) {
-        count = self.arrayOfPeopleFromSearch.count;
-    } else {
-        count = viewController.arrayOfPeople.count;
-    }
-    return count;
+
+    return dataInSection.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -130,12 +203,10 @@
     MainViewController* viewController = (MainViewController*)self.viewController;
     if(!viewController)
         return cell;
-    Person* person;
-    if ([self filteringIsInProgress]) {
-        person = [self.arrayOfPeopleFromSearch objectAtIndex:indexPath.row];
-    } else {
-        person = [viewController.arrayOfPeople objectAtIndex:indexPath.row];
-    }
+    NSArray * section = [self.sectionedData objectAtIndex:indexPath.section];
+    if (!section)
+        return cell;
+    Person* person = [section objectAtIndex:indexPath.row];
     if (!person) {
         return cell;
     }
@@ -156,6 +227,14 @@
     return cell;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self.uniqueFirstLetters objectAtIndex:section];
+}
+
+- (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return self.uniqueFirstLetters;
+}
+
 #pragma mark - Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -163,12 +242,10 @@
     MainViewController* viewController = (MainViewController*)self.viewController;
     if(!viewController)
         return;
-    Person* person;
-    if ([self filteringIsInProgress]) {
-        person = [self.arrayOfPeopleFromSearch objectAtIndex:indexPath.row];
-    } else {
-        person = [viewController.arrayOfPeople objectAtIndex:indexPath.row];
-    }
+    NSArray * section = [self.sectionedData objectAtIndex:indexPath.section];
+    if (!section)
+        return;
+    Person* person = [section objectAtIndex:indexPath.row];
     if (!person) {
         return;
     }

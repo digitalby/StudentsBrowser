@@ -12,15 +12,15 @@
 
 + (NSDictionary *)makeUserInfoWithDescription:(NSString *)description failureReason:(NSString *)failureReason recoverySuggestion:(NSString *)recoverySuggestion {
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc]init];
-    if(description)
+    if (description)
         [userInfo setObject:description forKey:NSLocalizedDescriptionKey];
     else
         [userInfo setObject:[NSNull null] forKey:NSLocalizedDescriptionKey];
-    if(failureReason)
+    if (failureReason)
         [userInfo setObject:failureReason forKey:NSLocalizedFailureReasonErrorKey];
     else
         [userInfo setObject:[NSNull null] forKey:NSLocalizedFailureReasonErrorKey];
-    if(recoverySuggestion)
+    if (recoverySuggestion)
         [userInfo setObject:recoverySuggestion forKey:NSLocalizedRecoverySuggestionErrorKey];
     else
         [userInfo setObject:[NSNull null] forKey:NSLocalizedRecoverySuggestionErrorKey];
