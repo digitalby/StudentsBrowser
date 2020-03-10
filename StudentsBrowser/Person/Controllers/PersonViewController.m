@@ -137,7 +137,7 @@
         [self.mapView setCenterCoordinate:coordinate];
         MKCoordinateRegion region;
         region.center = coordinate;
-        region.span = MKCoordinateSpanMake(30, 30);
+        region.span = MKCoordinateSpanMake(60, 60);
         [self.mapView setRegion:region];
         MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
         [annotation setCoordinate:coordinate];
@@ -155,6 +155,21 @@
 }
 
 #pragma mark - Actions
+
+- (IBAction)sharedTapAction:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    if (!button)
+        return;
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *copyAction = [UIAlertAction actionWithTitle:@"Copy" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        [pasteboard setString:button.titleLabel.text];
+    }];
+    [controller addAction:cancelAction];
+    [controller addAction:copyAction];
+    [self presentViewController:controller animated:YES completion:nil];
+}
 
 - (IBAction)didTapTitle:(id)sender {
 }

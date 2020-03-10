@@ -54,6 +54,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="didTapTitle:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="Bh2-yd-RVz"/>
+                                                            <action selector="sharedTapAction:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="hiC-6b-Ath"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -77,6 +78,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="didTapGender:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="wc6-dx-UBX"/>
+                                                            <action selector="sharedTapAction:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="CZl-We-Jop"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -99,6 +101,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="didTapNationality:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="eBY-vP-OK3"/>
+                                                            <action selector="sharedTapAction:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="Bsh-al-TdP"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -128,6 +131,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="didTapEmail:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="YX3-Td-K00"/>
+                                                            <action selector="sharedTapAction:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="U7t-JY-5zv"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -151,6 +155,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="didTapUsername:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="t8d-54-D1R"/>
+                                                            <action selector="sharedTapAction:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="JWj-15-T2O"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -174,6 +179,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="didTapPassword:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="HoC-Jf-rZQ"/>
+                                                            <action selector="sharedTapAction:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="Kld-c1-H65"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -203,6 +209,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="didTapDateOfBirth:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="Tlf-Dh-6z9"/>
+                                                            <action selector="sharedTapAction:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="ugc-yP-vdz"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -224,6 +231,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="didTapAge:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="K7x-QY-w4m"/>
+                                                            <action selector="sharedTapAction:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="Y0q-CC-jaS"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -252,6 +260,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="didTapCellPhone:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="efI-rL-wlx"/>
+                                                            <action selector="sharedTapAction:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="HB8-Tb-VwW"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -273,6 +282,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="didTapPhone:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="tBv-bB-Uso"/>
+                                                            <action selector="sharedTapAction:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="Nc3-Z4-eEM"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -301,6 +311,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="didTapCountry:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="pgL-Y5-NWy"/>
+                                                            <action selector="sharedTapAction:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="oQ7-5E-2Oa"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -322,6 +333,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="didTapState:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="x2W-Ad-Xxp"/>
+                                                            <action selector="sharedTapAction:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="gfw-qD-2Zx"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -343,6 +355,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="didTapCity:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="oml-ud-nad"/>
+                                                            <action selector="sharedTapAction:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="hZK-hk-O7x"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -364,6 +377,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="didTapStreet:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="sae-k2-SZo"/>
+                                                            <action selector="sharedTapAction:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="VcU-ap-uTD"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -385,6 +399,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="didTapTimeZone:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="fIN-IK-Dpu"/>
+                                                            <action selector="sharedTapAction:" destination="zRl-Xa-MGW" eventType="touchUpInside" id="UWM-T3-L2L"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
