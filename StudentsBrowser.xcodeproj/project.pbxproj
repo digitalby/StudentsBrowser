@@ -15,6 +15,7 @@
 		ED5820342416CAE30001FDC8 /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5820332416CAE30001FDC8 /* PersonViewController.m */; };
 		ED5820362416CC4A0001FDC8 /* PersonViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED5820352416CC4A0001FDC8 /* PersonViewController.storyboard */; };
 		ED58203D24182E700001FDC8 /* NSIndexPath+Flatten.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58203C24182E700001FDC8 /* NSIndexPath+Flatten.m */; };
+		ED582040241834820001FDC8 /* PersonSetupHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58203F241834820001FDC8 /* PersonSetupHelper.m */; };
 		ED884D87240A8C8400095134 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED884D86240A8C8400095134 /* MainViewController.m */; };
 		ED884DA2240A91B100095134 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED884D9C240A91B100095134 /* LaunchScreen.storyboard */; };
 		ED884DA3240A91B100095134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED884D9E240A91B100095134 /* main.m */; };
@@ -49,6 +50,8 @@
 		ED5820352416CC4A0001FDC8 /* PersonViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PersonViewController.storyboard; sourceTree = "<group>"; };
 		ED58203B24182E700001FDC8 /* NSIndexPath+Flatten.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+Flatten.h"; sourceTree = "<group>"; };
 		ED58203C24182E700001FDC8 /* NSIndexPath+Flatten.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+Flatten.m"; sourceTree = "<group>"; };
+		ED58203E241834820001FDC8 /* PersonSetupHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonSetupHelper.h; sourceTree = "<group>"; };
+		ED58203F241834820001FDC8 /* PersonSetupHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonSetupHelper.m; sourceTree = "<group>"; };
 		ED884D7C240A8C8400095134 /* StudentsBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentsBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED884D85240A8C8400095134 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		ED884D86240A8C8400095134 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -189,6 +192,8 @@
 		ED582037241828EB0001FDC8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				ED58203E241834820001FDC8 /* PersonSetupHelper.h */,
+				ED58203F241834820001FDC8 /* PersonSetupHelper.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -383,6 +388,7 @@
 				EDD7058C2412BBD50015EE32 /* JSONParser.m in Sources */,
 				EDD7057724127F990015EE32 /* NetworkError.m in Sources */,
 				ED5820342416CAE30001FDC8 /* PersonViewController.m in Sources */,
+				ED582040241834820001FDC8 /* PersonSetupHelper.m in Sources */,
 				EDD7058324128D3E0015EE32 /* Login.m in Sources */,
 				ED5820202414F2790001FDC8 /* Downloader.m in Sources */,
 				EDD7058924128E540015EE32 /* Location.m in Sources */,

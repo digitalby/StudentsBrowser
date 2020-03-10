@@ -210,7 +210,7 @@
                     NSString *persistentKey = [NSString stringWithFormat:@"large%tu", flatIndexPath];
                     [NSUserDefaults.standardUserDefaults setObject:imageData forKey:persistentKey];
                     person.picture.largePicture = imageData;
-                    [destination setupPictureForCurrentPerson];
+                    [destination.personSetupHelper setupPictureForCurrentPerson];
                 }
             });
         }];

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "Person.h"
+#import "PersonSetupHelper.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -37,10 +38,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UIButton *timeZoneButton;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
-@property (nonatomic) Person *person;
+@property (nonatomic) Person* person;
+@property (nonatomic) PersonSetupHelper* personSetupHelper;
 
 - (instancetype)initWithCoder:(NSCoder *)coder andPerson:(Person*)person;
-- (void)setupPictureForCurrentPerson;
 
 @end
 
