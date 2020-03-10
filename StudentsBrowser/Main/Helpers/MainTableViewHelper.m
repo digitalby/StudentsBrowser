@@ -7,10 +7,10 @@
 //
 
 #import "MainTableViewHelper.h"
+#import "MainViewController.h"
 
 @interface MainTableViewHelper ()
 
-@property(nonatomic) NSArray* arrayOfPeopleFromSearch;
 @property(nonatomic) UISearchController* searchController;
 
 @end
@@ -20,91 +20,10 @@
 - (instancetype)initWithViewController:(UIViewController *)viewController {
     self.viewController = viewController;
 
-    self.sectionedData = [[NSArray alloc]init];
-    self.uniqueFirstLetters = [[NSArray alloc]init];
-
     self.arrayOfPeopleFromSearch = [[NSArray alloc]init];
     [self setupSearchController];
 
     return self;
-}
-
-#pragma mark - Data helpers
-
-- (void)updateSectionedData {
-    NSArray *uniqueFirstLetters = self.uniqueFirstLetters;
-
-    NSArray<Person *> * data = self.currentArrayOfPeople;
-
-    NSMutableArray<NSArray<Person *> *> * sectionedData = [[NSMutableArray alloc]init];
-    for (NSString * lhs in uniqueFirstLetters) {
-        NSMutableArray<Person *> * dataInSection = [[NSMutableArray alloc] init];
-
-        for (Person * person in data) {
-            NSString *rhs;
-            if (!person.fullName || !person.fullName.lastName)
-                continue;
-            rhs = [person.fullName.lastName substringToIndex:1];
-            if (!rhs)
-                continue;
-            rhs = [rhs stringByApplyingTransform:NSStringTransformStripCombiningMarks reverse:NO];
-            rhs = [rhs uppercaseString];
-            if ([rhs rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]].location == NSNotFound)
-                rhs = @"#";
-
-            if ([lhs isEqualToString:rhs])
-                [dataInSection addObject:person];
-        }
-        [dataInSection sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-            Person *lhs = (Person *)obj1;
-            Person *rhs = (Person *)obj2;
-            return [lhs.fullName.lastName compare:rhs.fullName.lastName];
-        }];
-        [sectionedData addObject:dataInSection];
-    }
-    self.sectionedData = sectionedData;
-}
-
-- (void)updateUniqueFirstLetters {
-    NSMutableArray<NSString *> * firstLetters = [[NSMutableArray alloc]init];
-
-    NSArray<Person *> * data = self.currentArrayOfPeople;
-
-    for (Person* person in data) {
-        NSString *letter;
-        if (!person.fullName || !person.fullName.lastName)
-            continue;
-        letter = [person.fullName.lastName substringToIndex:1];
-        if (!letter)
-            continue;
-        letter = [letter stringByApplyingTransform:NSStringTransformStripCombiningMarks reverse:NO];
-        letter = [letter uppercaseString];
-        if ([letter rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]].location == NSNotFound)
-            letter = @"#";
-
-        [firstLetters addObject:letter];
-    }
-
-    NSSet<NSString *> *setOfLetters = [NSSet setWithArray:firstLetters];
-    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc]initWithKey:nil ascending:YES];
-    NSArray<NSString *> *sortedArrayOfUniqueLetters = [setOfLetters sortedArrayUsingDescriptors:@[descriptor]];
-
-    self.uniqueFirstLetters = sortedArrayOfUniqueLetters;
-}
-
-- (NSArray<Person *> *)currentArrayOfPeople {
-    NSArray<Person *> * data = [[NSArray alloc]init];
-    MainViewController* viewController = (MainViewController*)self.viewController;
-    if(!viewController)
-        return data;
-
-    if ([self filteringIsInProgress]) {
-        data = self.arrayOfPeopleFromSearch;
-    } else {
-        data = viewController.arrayOfPeople;
-    }
-
-    return data;
 }
 
 #pragma mark - Search Helpers
@@ -142,15 +61,15 @@
         genderPredicate = [NSPredicate predicateWithFormat:@"gender == %d", gender];
     else
         genderPredicate = [NSPredicate predicateWithValue:YES];
-    filteredArray = [viewController.arrayOfPeople filteredArrayUsingPredicate:genderPredicate];
+    filteredArray = [viewController.dataHelper.arrayOfPeople filteredArrayUsingPredicate:genderPredicate];
     if (![self searchBarIsEmpty]) {
         NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"(fullName.firstName CONTAINS[cd] %@) OR (fullName.lastName CONTAINS[cd] %@)", text, text];
         filteredArray = [filteredArray filteredArrayUsingPredicate:namePredicate];
     }
 
     self.arrayOfPeopleFromSearch = filteredArray;
-    [self updateUniqueFirstLetters];
-    [self updateSectionedData];
+    [viewController.dataHelper updateUniqueFirstLetters];
+    [viewController.dataHelper updateSectionedData];
     [viewController.tableView reloadData];
 }
 
@@ -191,11 +110,18 @@
 #pragma mark - Data Source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.sectionedData.count;
+    MainViewController* viewController = (MainViewController*)self.viewController;
+    if(!viewController)
+        return 0;
+    return viewController.dataHelper.sectionedData.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray * dataInSection = [self.sectionedData objectAtIndex:section];
+    MainViewController* viewController = (MainViewController*)self.viewController;
+    if(!viewController)
+        return 0;
+
+    NSArray * dataInSection = [viewController.dataHelper.sectionedData objectAtIndex:section];
     if (!dataInSection)
         return 0;
 
@@ -210,7 +136,7 @@
     MainViewController* viewController = (MainViewController*)self.viewController;
     if(!viewController)
         return cell;
-    NSArray * section = [self.sectionedData objectAtIndex:indexPath.section];
+    NSArray * section = [viewController.dataHelper.sectionedData objectAtIndex:indexPath.section];
     if (!section)
         return cell;
     Person* person = [section objectAtIndex:indexPath.row];
@@ -235,11 +161,17 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [self.uniqueFirstLetters objectAtIndex:section];
+    MainViewController* viewController = (MainViewController*)self.viewController;
+    if(!viewController)
+        return nil;
+    return [viewController.dataHelper.uniqueFirstLetters objectAtIndex:section];
 }
 
 - (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return self.uniqueFirstLetters;
+    MainViewController* viewController = (MainViewController*)self.viewController;
+    if(!viewController)
+        return nil;
+    return viewController.dataHelper.uniqueFirstLetters;
 }
 
 #pragma mark - Delegate

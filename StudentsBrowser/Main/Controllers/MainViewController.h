@@ -10,6 +10,7 @@
 #import "JSONDownloader.h"
 #import "JSONParser.h"
 #import "ThumbnailDownloader.h"
+#import "MainDataHelper.h"
 #import "StudentCell.h"
 #import "MainTableViewHelper.h"
 #import "PersonViewController.h"
@@ -21,7 +22,13 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshBarButtonItem;
 
-@property(nonatomic) NSArray* arrayOfPeople;
+@property(nonatomic) UIActivityIndicatorView* throbber;
+
+@property(nonatomic) MainTableViewHelper* tableViewHelper;
+@property(nonatomic) MainDataHelper* dataHelper;
+@property(nonatomic) JSONDownloader* peopleDownloader;
+@property(nonatomic) JSONParser* peopleParser;
+@property(nonatomic) ThumbnailDownloader* thumbnailDownloader;
 
 @end
 

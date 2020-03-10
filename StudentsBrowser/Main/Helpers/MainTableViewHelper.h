@@ -7,19 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MainViewController.h"
+#import "Person.h"
 #import "ViewControllerHelper.h"
 
 @interface MainTableViewHelper : NSObject<ViewControllerHelper, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate>
 
 @property (weak, nonatomic) UIViewController* _Nullable viewController;
-@property (nonatomic) NSArray<NSArray<Person *> *> * _Nonnull sectionedData;
-@property (nonatomic) NSArray<NSString *> * _Nonnull uniqueFirstLetters;
-@property (nonatomic, readonly) NSArray<Person *> * _Nonnull currentArrayOfPeople;
+
+@property(nonatomic) NSArray* _Nonnull arrayOfPeopleFromSearch;
 
 - (instancetype _Nonnull) initWithViewController:(UIViewController * _Nonnull)viewController;
 - (BOOL) filteringIsInProgress;
-- (void) updateSectionedData;
-- (void) updateUniqueFirstLetters;
 
 @end
