@@ -17,6 +17,7 @@
 		ED58203D24182E700001FDC8 /* NSIndexPath+Flatten.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58203C24182E700001FDC8 /* NSIndexPath+Flatten.m */; };
 		ED582040241834820001FDC8 /* PersonSetupHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58203F241834820001FDC8 /* PersonSetupHelper.m */; };
 		ED5820432418386D0001FDC8 /* MainDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5820422418386D0001FDC8 /* MainDataHelper.m */; };
+		ED582046241841550001FDC8 /* MainSearchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED582045241841550001FDC8 /* MainSearchHelper.m */; };
 		ED884D87240A8C8400095134 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED884D86240A8C8400095134 /* MainViewController.m */; };
 		ED884DA2240A91B100095134 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED884D9C240A91B100095134 /* LaunchScreen.storyboard */; };
 		ED884DA3240A91B100095134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED884D9E240A91B100095134 /* main.m */; };
@@ -55,6 +56,8 @@
 		ED58203F241834820001FDC8 /* PersonSetupHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonSetupHelper.m; sourceTree = "<group>"; };
 		ED5820412418386D0001FDC8 /* MainDataHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainDataHelper.h; sourceTree = "<group>"; };
 		ED5820422418386D0001FDC8 /* MainDataHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainDataHelper.m; sourceTree = "<group>"; };
+		ED582044241841550001FDC8 /* MainSearchHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainSearchHelper.h; sourceTree = "<group>"; };
+		ED582045241841550001FDC8 /* MainSearchHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainSearchHelper.m; sourceTree = "<group>"; };
 		ED884D7C240A8C8400095134 /* StudentsBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentsBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED884D85240A8C8400095134 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		ED884D86240A8C8400095134 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -311,6 +314,8 @@
 				ED5604D02414332A00E00971 /* MainTableViewHelper.m */,
 				ED5820412418386D0001FDC8 /* MainDataHelper.h */,
 				ED5820422418386D0001FDC8 /* MainDataHelper.m */,
+				ED582044241841550001FDC8 /* MainSearchHelper.h */,
+				ED582045241841550001FDC8 /* MainSearchHelper.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -397,6 +402,7 @@
 				EDD7058324128D3E0015EE32 /* Login.m in Sources */,
 				ED5820202414F2790001FDC8 /* Downloader.m in Sources */,
 				EDD7058924128E540015EE32 /* Location.m in Sources */,
+				ED582046241841550001FDC8 /* MainSearchHelper.m in Sources */,
 				EDD7057A241287230015EE32 /* Person.m in Sources */,
 				ED884DA3240A91B100095134 /* main.m in Sources */,
 				EDD7058624128DB90015EE32 /* Picture.m in Sources */,

@@ -24,6 +24,7 @@
 
     self.tableViewHelper = [[MainTableViewHelper alloc]initWithViewController:self];
     self.dataHelper = [[MainDataHelper alloc]initWithViewController:self];
+    self.searchHelper = [[MainSearchHelper alloc]initWithViewController:self];
 
     self.tableView.dataSource = self.tableViewHelper;
     self.tableView.delegate = self.tableViewHelper;

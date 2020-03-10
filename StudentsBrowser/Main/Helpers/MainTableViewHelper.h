@@ -10,13 +10,10 @@
 #import "Person.h"
 #import "ViewControllerHelper.h"
 
-@interface MainTableViewHelper : NSObject<ViewControllerHelper, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate>
+@interface MainTableViewHelper : NSObject<ViewControllerHelper, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) UIViewController* _Nullable viewController;
 
-@property(nonatomic) NSArray* _Nonnull arrayOfPeopleFromSearch;
-
 - (instancetype _Nonnull) initWithViewController:(UIViewController * _Nonnull)viewController;
-- (BOOL) filteringIsInProgress;
 
 @end

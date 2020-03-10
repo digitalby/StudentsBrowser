@@ -14,6 +14,7 @@
 #import "StudentCell.h"
 #import "MainTableViewHelper.h"
 #import "PersonViewController.h"
+#import "MainSearchHelper.h"
 #import "NSIndexPath+Flatten.h"
 
 @interface MainViewController : UIViewController
@@ -26,6 +27,8 @@
 
 @property(nonatomic) MainTableViewHelper* tableViewHelper;
 @property(nonatomic) MainDataHelper* dataHelper;
+@property(nonatomic) MainSearchHelper* searchHelper;
+
 @property(nonatomic) JSONDownloader* peopleDownloader;
 @property(nonatomic) JSONParser* peopleParser;
 @property(nonatomic) ThumbnailDownloader* thumbnailDownloader;

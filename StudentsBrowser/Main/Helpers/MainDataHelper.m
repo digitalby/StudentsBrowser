@@ -91,8 +91,8 @@
     if(!viewController)
         return data;
 
-    if ([viewController.tableViewHelper filteringIsInProgress]) {
-        data = viewController.tableViewHelper.arrayOfPeopleFromSearch;
+    if ([viewController.searchHelper filteringIsInProgress]) {
+        data = viewController.searchHelper.arrayOfPeopleFromSearch;
     } else {
         data = self.arrayOfPeople;
     }
