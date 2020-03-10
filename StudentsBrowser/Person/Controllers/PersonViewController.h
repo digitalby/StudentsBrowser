@@ -39,7 +39,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) Person *person;
 
--(instancetype)initWithCoder:(NSCoder *)coder andPerson:(Person*)person;
+- (instancetype)initWithCoder:(NSCoder *)coder andPerson:(Person*)person;
+- (void)setupPictureForCurrentPerson;
 
 @end
 

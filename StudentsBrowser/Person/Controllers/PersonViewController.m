@@ -27,6 +27,17 @@
     self.pictureImageView.layer.masksToBounds = YES;
 }
 
+- (void)setupPictureForCurrentPerson {
+    Person* person = self.person;
+    if (!person)
+        return;
+    if (person.picture && person.picture.largePicture) {
+        UIImage *image = [UIImage imageWithData:person.picture.largePicture];
+        if (image)
+            [self.pictureImageView setImage:image];
+    }
+}
+
 - (void)setupForCurrentPerson {
     Person* person = self.person;
     if (!person)
@@ -37,7 +48,7 @@
         self.title = [self.person.fullName makeFirstAndLastName];
 
 #pragma mark Picture
-#warning Picture
+    [self setupPictureForCurrentPerson];
 
 #pragma mark General
     if (person.fullName && person.fullName.title)

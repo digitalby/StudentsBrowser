@@ -14,6 +14,7 @@
 		ED58202D2416C9840001FDC8 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED58202C2416C9840001FDC8 /* MainViewController.storyboard */; };
 		ED5820342416CAE30001FDC8 /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5820332416CAE30001FDC8 /* PersonViewController.m */; };
 		ED5820362416CC4A0001FDC8 /* PersonViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED5820352416CC4A0001FDC8 /* PersonViewController.storyboard */; };
+		ED58203D24182E700001FDC8 /* NSIndexPath+Flatten.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58203C24182E700001FDC8 /* NSIndexPath+Flatten.m */; };
 		ED884D87240A8C8400095134 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED884D86240A8C8400095134 /* MainViewController.m */; };
 		ED884DA2240A91B100095134 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED884D9C240A91B100095134 /* LaunchScreen.storyboard */; };
 		ED884DA3240A91B100095134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED884D9E240A91B100095134 /* main.m */; };
@@ -46,6 +47,8 @@
 		ED5820322416CAE30001FDC8 /* PersonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonViewController.h; sourceTree = "<group>"; };
 		ED5820332416CAE30001FDC8 /* PersonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonViewController.m; sourceTree = "<group>"; };
 		ED5820352416CC4A0001FDC8 /* PersonViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PersonViewController.storyboard; sourceTree = "<group>"; };
+		ED58203B24182E700001FDC8 /* NSIndexPath+Flatten.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+Flatten.h"; sourceTree = "<group>"; };
+		ED58203C24182E700001FDC8 /* NSIndexPath+Flatten.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+Flatten.m"; sourceTree = "<group>"; };
 		ED884D7C240A8C8400095134 /* StudentsBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentsBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED884D85240A8C8400095134 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		ED884D86240A8C8400095134 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -159,7 +162,7 @@
 		ED58202E2416CA910001FDC8 /* Person */ = {
 			isa = PBXGroup;
 			children = (
-				ED5820312416CACB0001FDC8 /* Network */,
+				ED582037241828EB0001FDC8 /* Helpers */,
 				ED58202F2416CABE0001FDC8 /* Views */,
 				ED5820302416CAC30001FDC8 /* Controllers */,
 			);
@@ -183,11 +186,11 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		ED5820312416CACB0001FDC8 /* Network */ = {
+		ED582037241828EB0001FDC8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Network;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		ED884D73240A8C8400095134 = {
@@ -285,6 +288,8 @@
 			children = (
 				ED582021241596530001FDC8 /* NSError+MakeUserInfo.h */,
 				ED582022241596530001FDC8 /* NSError+MakeUserInfo.m */,
+				ED58203B24182E700001FDC8 /* NSIndexPath+Flatten.h */,
+				ED58203C24182E700001FDC8 /* NSIndexPath+Flatten.m */,
 				EDD7058E24142F060015EE32 /* NSURL+Query.h */,
 				EDD7058F24142F060015EE32 /* NSURL+Query.m */,
 			);
@@ -390,6 +395,7 @@
 				ED5604D12414332A00E00971 /* MainTableViewHelper.m in Sources */,
 				EDE1D206240A9896009CFA60 /* StudentCell.m in Sources */,
 				ED582023241596530001FDC8 /* NSError+MakeUserInfo.m in Sources */,
+				ED58203D24182E700001FDC8 /* NSIndexPath+Flatten.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

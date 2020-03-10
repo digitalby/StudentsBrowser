@@ -77,6 +77,7 @@
             }
             if (json) {
                 [self clearPersistentThumbnails];
+                [self clearPersistentLargePictures];
                 [self parsePeopleFromJSONArray:json];
             }
         });
@@ -96,6 +97,7 @@
     [self.tableView reloadData];
     NSUInteger numberOfPeople = self.arrayOfPeople.count;
     [NSUserDefaults.standardUserDefaults setInteger:numberOfPeople forKey:@"thumbnails"];
+    [self retrievePersistentLargePictures];
     [self retrievePersistentThumbnails];
     [self downloadThumbnails];
 }
@@ -151,6 +153,27 @@
     }
 }
 
+- (void) retrievePersistentLargePictures {
+    NSUInteger numberOfPeople = [NSUserDefaults.standardUserDefaults integerForKey:@"thumbnails"];
+    for (NSUInteger i = 0; i < numberOfPeople; i++) {
+        Person* person = [self.arrayOfPeople objectAtIndex:i];
+        if (!person || person.picture.largePicture)
+            continue;
+        NSString *persistentKey = [NSString stringWithFormat:@"large%tu", i];
+        NSData *persistentData = [NSUserDefaults.standardUserDefaults dataForKey:persistentKey];
+        if (persistentData)
+            person.picture.largePicture = persistentData;
+    }
+}
+
+- (void) clearPersistentLargePictures {
+    NSUInteger numberOfPersistentPeople = [NSUserDefaults.standardUserDefaults integerForKey:@"thumbnails"];
+    for (NSUInteger i = 0; i < numberOfPersistentPeople; i++) {
+        NSString *persistentKey = [NSString stringWithFormat:@"large%tu", i];
+        [NSUserDefaults.standardUserDefaults setObject:nil forKey:persistentKey];
+    }
+}
+
 #pragma mark - Actions
 
 - (IBAction)didTapLeftBarButtonItem:(id)sender {
@@ -174,7 +197,33 @@
     Person* person = self.tableViewHelper.sectionedData[indexPath.section][indexPath.row];
     if (!person)
         return nil;
-    return [[PersonViewController alloc]initWithCoder:coder andPerson:person];
+    PersonViewController *destination = [[PersonViewController alloc]initWithCoder:coder andPerson:person];
+    if (person.picture && !person.picture.largePicture) {
+        NSString* urlString = person.picture.largePictureURLString;
+        if (!urlString)
+            return destination;
+        NSURL* url = [[NSURL alloc]initWithString:urlString];
+        if (!url)
+            return destination;
+
+        [self.thumbnailDownloader downloadImageAtURL:url completion:^(NSData * _Nullable imageData, NSError * _Nullable error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (error) {
+                    NSLog(@"%@", error.description);
+                    return;
+                }
+                if (imageData) {
+                    NSInteger flatIndexPath = [indexPath flattenIndexPathForTableView:self.tableView];
+                    NSString *persistentKey = [NSString stringWithFormat:@"large%tu", flatIndexPath];
+                    [NSUserDefaults.standardUserDefaults setObject:imageData forKey:persistentKey];
+                    person.picture.largePicture = imageData;
+                    [destination setupPictureForCurrentPerson];
+                }
+            });
+        }];
+    }
+
+    return destination;
 }
 
 @end

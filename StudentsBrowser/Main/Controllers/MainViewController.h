@@ -13,6 +13,7 @@
 #import "StudentCell.h"
 #import "MainTableViewHelper.h"
 #import "PersonViewController.h"
+#import "NSIndexPath+Flatten.h"
 
 @interface MainViewController : UIViewController
 
