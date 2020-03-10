@@ -20,6 +20,8 @@
 @property(nonatomic) NSString * _Nullable streetNumber;
 @property(nonatomic) NSString * _Nullable timezoneDescription;
 
+@property(nonatomic, readonly) NSString * _Nonnull addressLine;
+
 - (NSString* _Nonnull) description;
 
 @end

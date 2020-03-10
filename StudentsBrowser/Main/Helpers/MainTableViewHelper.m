@@ -246,17 +246,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    MainViewController* viewController = (MainViewController*)self.viewController;
-    if(!viewController)
-        return;
-    NSArray * section = [self.sectionedData objectAtIndex:indexPath.section];
-    if (!section)
-        return;
-    Person* person = [section objectAtIndex:indexPath.row];
-    if (!person) {
-        return;
-    }
-    [viewController performSegueWithIdentifier:@"ShowPerson" sender:self.viewController];
 }
 
 @end

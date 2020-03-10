@@ -10,6 +10,18 @@
 
 @implementation Location
 
+- (NSString * _Nonnull)addressLine {
+    NSMutableString *string = [NSMutableString string];
+    if (self.postcode)
+        [string appendFormat:@"(%@)", self.postcode];
+    if (self.streetName) {
+        [string appendFormat:@" %@", self.streetName];
+        if (self.streetNumber)
+            [string appendFormat:@" %@", self.streetNumber];
+    }
+    return [string stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+}
+
 - (NSString *)description
 {
     NSString* coordinates = [NSString stringWithFormat: @"coordinates: %f,%f", self.coordinates.latitude, self.coordinates.longitude];

@@ -164,4 +164,17 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
+- (IBSegueAction UIViewController *)showPerson:(NSCoder *)coder sender:(id)sender {
+    StudentCell *selectedCell = (StudentCell *)sender;
+    if(!selectedCell)
+        return nil;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:selectedCell];
+    if (!indexPath)
+        return nil;
+    Person* person = self.tableViewHelper.sectionedData[indexPath.section][indexPath.row];
+    if (!person)
+        return nil;
+    return [[PersonViewController alloc]initWithCoder:coder andPerson:person];
+}
+
 @end

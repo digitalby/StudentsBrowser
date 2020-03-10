@@ -78,11 +78,11 @@
             location.city = [locationDictionary valueForKey:@"city"];
             location.state = [locationDictionary valueForKey:@"state"];
             location.country = [locationDictionary valueForKey:@"country"];
-            location.postcode = [locationDictionary valueForKey:@"postcode"];
+            location.postcode = [NSString stringWithFormat:@"%@", [locationDictionary valueForKey:@"postcode"]];
             NSDictionary *streetDictionary = [locationDictionary valueForKey:@"street"];
             if (streetDictionary) {
                 location.streetName = [streetDictionary valueForKey:@"name"];
-                location.streetNumber = [streetDictionary valueForKey:@"number"];
+                location.streetNumber = [NSString stringWithFormat:@"%@", [streetDictionary valueForKey:@"number"]];
             }
             NSDictionary *timezoneDictionary = [locationDictionary valueForKey:@"timezone"];
             if (timezoneDictionary) {
@@ -92,10 +92,11 @@
             CLLocationCoordinate2D coordinates = kCLLocationCoordinate2DInvalid;
             NSDictionary *coordinatesDictionary = [locationDictionary valueForKey:@"coordinates"];
             if (coordinatesDictionary) {
-                NSString *latitudeString = [coordinatesDictionary valueForKey:@"latitude"];
-                NSString *longitudeString = [coordinatesDictionary valueForKey:@"longitude"];
+                NSString *latitudeString = [NSString stringWithFormat:@"%@", [coordinatesDictionary valueForKey:@"latitude"]];
+                NSString *longitudeString = [NSString stringWithFormat:@"%@", [coordinatesDictionary valueForKey:@"longitude"]];
                 if (latitudeString && longitudeString) {
                     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+                    formatter.decimalSeparator = @".";
                     NSNumber *latitudeNumber = [formatter numberFromString:latitudeString];
                     NSNumber *longitudeNumber = [formatter numberFromString:longitudeString];
                     if (latitudeNumber && longitudeString) {

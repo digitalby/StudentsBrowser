@@ -12,6 +12,7 @@
 #import "ThumbnailDownloader.h"
 #import "StudentCell.h"
 #import "MainTableViewHelper.h"
+#import "PersonViewController.h"
 
 @interface MainViewController : UIViewController
 

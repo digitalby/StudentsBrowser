@@ -26,6 +26,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="oli-cc-9An" kind="show" identifier="ShowPerson" destinationCreationSelector="showPerson:sender:" id="y7E-rB-qzm"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -56,7 +59,6 @@
                         <outlet property="mainNavigationItem" destination="q5z-yU-1ac" id="BdK-AO-p8u"/>
                         <outlet property="rightBarButtonItem" destination="2hW-k6-nwR" id="Wev-tg-hjX"/>
                         <outlet property="tableView" destination="qis-12-67v" id="aWl-t7-8Kt"/>
-                        <segue destination="oli-cc-9An" kind="show" identifier="ShowPerson" id="dbq-K1-oRk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
