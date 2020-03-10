@@ -18,6 +18,7 @@
 		ED582040241834820001FDC8 /* PersonSetupHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58203F241834820001FDC8 /* PersonSetupHelper.m */; };
 		ED5820432418386D0001FDC8 /* MainDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5820422418386D0001FDC8 /* MainDataHelper.m */; };
 		ED582046241841550001FDC8 /* MainSearchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED582045241841550001FDC8 /* MainSearchHelper.m */; };
+		ED582049241843D10001FDC8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ED582048241843D10001FDC8 /* Settings.bundle */; };
 		ED884D87240A8C8400095134 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED884D86240A8C8400095134 /* MainViewController.m */; };
 		ED884DA2240A91B100095134 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED884D9C240A91B100095134 /* LaunchScreen.storyboard */; };
 		ED884DA3240A91B100095134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED884D9E240A91B100095134 /* main.m */; };
@@ -58,6 +59,7 @@
 		ED5820422418386D0001FDC8 /* MainDataHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainDataHelper.m; sourceTree = "<group>"; };
 		ED582044241841550001FDC8 /* MainSearchHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainSearchHelper.h; sourceTree = "<group>"; };
 		ED582045241841550001FDC8 /* MainSearchHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainSearchHelper.m; sourceTree = "<group>"; };
+		ED582048241843D10001FDC8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		ED884D7C240A8C8400095134 /* StudentsBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentsBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED884D85240A8C8400095134 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		ED884D86240A8C8400095134 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -204,6 +206,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		ED5820472418439C0001FDC8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				ED582048241843D10001FDC8 /* Settings.bundle */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		ED884D73240A8C8400095134 = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +244,7 @@
 		ED884D99240A91B100095134 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				ED5820472418439C0001FDC8 /* Settings */,
 				ED884D9A240A91B100095134 /* AppDelegate.h */,
 				ED884D9F240A91B100095134 /* AppDelegate.m */,
 				ED884D9B240A91B100095134 /* Assets.xcassets */,
@@ -381,6 +392,7 @@
 				ED5820362416CC4A0001FDC8 /* PersonViewController.storyboard in Resources */,
 				ED884DA2240A91B100095134 /* LaunchScreen.storyboard in Resources */,
 				ED884DA6240A924200095134 /* Assets.xcassets in Resources */,
+				ED582049241843D10001FDC8 /* Settings.bundle in Resources */,
 				ED884DA7240A927B00095134 /* Entry.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
