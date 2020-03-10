@@ -27,7 +27,7 @@
     self.throbber = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
     self.throbber.hidesWhenStopped = YES;
     UIBarButtonItem *throbberBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.throbber];
-    [self.mainNavigationItem setLeftBarButtonItems:@[self.leftBarButtonItem, throbberBarButtonItem]];
+    [self.mainNavigationItem setLeftBarButtonItems:@[throbberBarButtonItem]];
 
     self.arrayOfPeople = [[NSArray alloc]init];
     self.tableViewHelper = [[MainTableViewHelper alloc]initWithViewController:self];
@@ -176,15 +176,8 @@
 
 #pragma mark - Actions
 
-- (IBAction)didTapLeftBarButtonItem:(id)sender {
+- (IBAction)didTapRefreshBarButtonItem:(id)sender {
     [self downloadPeople];
-}
-
-- (IBAction)didTapRightBarButtonItem:(id)sender {
-    UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Action" message:@"You tapped right bar button item" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-    [alertController addAction:okAction];
-    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (IBSegueAction UIViewController *)showPerson:(NSCoder *)coder sender:(id)sender {

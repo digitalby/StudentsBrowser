@@ -19,8 +19,7 @@
 
 @property (strong, nonatomic) IBOutlet UINavigationItem *mainNavigationItem;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *leftBarButtonItem;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *rightBarButtonItem;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshBarButtonItem;
 
 @property(nonatomic) NSArray* arrayOfPeople;
 

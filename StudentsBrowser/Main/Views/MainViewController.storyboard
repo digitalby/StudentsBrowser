@@ -43,21 +43,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="StudentsBrowser" id="q5z-yU-1ac">
-                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="AIX-Ou-gkD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="AIX-Ou-gkD">
                             <connections>
-                                <action selector="didTapLeftBarButtonItem:" destination="BYZ-38-t0r" id="fwy-AX-3Ve"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="More" image="ellipsis.circle" catalog="system" id="2hW-k6-nwR">
-                            <connections>
-                                <action selector="didTapRightBarButtonItem:" destination="BYZ-38-t0r" id="vq5-xp-Y95"/>
+                                <action selector="didTapRefreshBarButtonItem:" destination="BYZ-38-t0r" id="fwy-AX-3Ve"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="leftBarButtonItem" destination="AIX-Ou-gkD" id="w88-XR-fE6"/>
                         <outlet property="mainNavigationItem" destination="q5z-yU-1ac" id="BdK-AO-p8u"/>
-                        <outlet property="rightBarButtonItem" destination="2hW-k6-nwR" id="Wev-tg-hjX"/>
+                        <outlet property="refreshBarButtonItem" destination="AIX-Ou-gkD" id="w88-XR-fE6"/>
                         <outlet property="tableView" destination="qis-12-67v" id="aWl-t7-8Kt"/>
                     </connections>
                 </viewController>
@@ -76,7 +70,4 @@
             <point key="canvasLocation" x="1957" y="138"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="ellipsis.circle" catalog="system" width="64" height="60"/>
-    </resources>
 </document>
