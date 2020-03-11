@@ -60,7 +60,7 @@
 		ED582044241841550001FDC8 /* MainSearchHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainSearchHelper.h; sourceTree = "<group>"; };
 		ED582045241841550001FDC8 /* MainSearchHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainSearchHelper.m; sourceTree = "<group>"; };
 		ED582048241843D10001FDC8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		ED884D7C240A8C8400095134 /* StudentsBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentsBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED884D7C240A8C8400095134 /* StudBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED884D85240A8C8400095134 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		ED884D86240A8C8400095134 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		ED884D89240A8C8400095134 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Entry.storyboard; sourceTree = "<group>"; };
@@ -225,7 +225,7 @@
 		ED884D7D240A8C8400095134 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ED884D7C240A8C8400095134 /* StudentsBrowser.app */,
+				ED884D7C240A8C8400095134 /* StudBrowser.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -348,7 +348,7 @@
 			);
 			name = StudentsBrowser;
 			productName = StudentsBrowser;
-			productReference = ED884D7C240A8C8400095134 /* StudentsBrowser.app */;
+			productReference = ED884D7C240A8C8400095134 /* StudBrowser.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -579,7 +579,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.digitalby.StudentsBrowser;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = StudBrowser;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -598,7 +598,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.digitalby.StudentsBrowser;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = StudBrowser;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
